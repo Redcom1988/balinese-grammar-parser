@@ -41,7 +41,11 @@ class BalineseVPParser:
                 (word.startswith('"') and word.endswith('"')))
 
     def get_word_type(self, word):
-        # Remove quotes if present
+        # Handle quoted names as a special case
+        if word.startswith('"') and word.endswith('"'):
+            return 'person'  # Return person type for quoted names
+        
+        # Remove quotes if present for dictionary lookup
         clean_word = word.strip('"')
         
         for word_type, word_list in words.items():
@@ -74,17 +78,16 @@ class BalineseVPParser:
                 if ((self.is_in_any_noun_category(tokens[i]) or self.get_word_type(tokens[i]) == 'Pronoun' or self.is_person(tokens[i])) and
                         self.get_word_type(tokens[i + 1]) == 'transitiveVerb'):
                     verb = tokens[i + 1]
-                    object_word = tokens[i + 2].strip('"')
+                    object_word = tokens[i + 2]
                     
-                    if verb in verbCategoryPairs:
-                        valid_categories = verbCategoryPairs[verb]
-                        for category in valid_categories:
-                            if object_word in nounCategories.get(category, []):
-                                valid_vps.append({
-                                    'type': 'Noun/People/Pronoun + TransitiveVerb + ValidObject',
-                                    'phrase': f"{tokens[i]} {tokens[i + 1]} {tokens[i + 2]}"
-                                })
-                                break
+                    # Check if the object is a quoted name or in valid categories
+                    if (object_word.startswith('"') and object_word.endswith('"')) or \
+                    any(object_word.strip('"') in nounCategories.get(category, []) 
+                        for category in verbCategoryPairs.get(verb, [])):
+                        valid_vps.append({
+                            'type': 'Noun/People/Pronoun + TransitiveVerb + ValidObject',
+                            'phrase': f"{tokens[i]} {tokens[i + 1]} {tokens[i + 2]}"
+                        })
 
             # Rule 3: Adv + Verb + Noun/Person/Pronoun
             if i < len(tokens) - 2:
@@ -239,10 +242,11 @@ class BalineseVPParser:
 
         # Helper function to identify objects and complements
         def get_object_type(word):
+            if word.startswith('"') and word.endswith('"'):
+                return 'person'
             word = word.strip('"')
             if self.is_person(word) or self.get_word_type(word) == 'Pronoun':
                 return 'person'
-            # Check if word exists in any noun category
             if self.is_in_any_noun_category(word):
                 return 'object'
             return None
@@ -284,7 +288,7 @@ class BalineseVPParser:
                     is_complement(tokens[i + 3]) and 
                     is_description(tokens[i + 4])):
                     structures.append({
-                        'type': 'SPOPelKet (Subject-Predicate-Object-Complement-Description)',
+                        'type': 'S P O Pel Ket (Subject-Predicate-Object-Complement-Description)',
                         'phrase': f"{tokens[i]} {tokens[i + 1]} {tokens[i + 2]} {tokens[i + 3]} {tokens[i + 4]}"
                     })
                     i += 5
@@ -298,7 +302,7 @@ class BalineseVPParser:
                     get_object_type(tokens[i + 2])):
                     if is_complement(tokens[i + 3]):
                         structures.append({
-                            'type': 'SPOPel (Subject-Predicate-Object-Complement)',
+                            'type': 'S P O Pel (Subject-Predicate-Object-Complement)',
                             'phrase': f"{tokens[i]} {tokens[i + 1]} {tokens[i + 2]} {tokens[i + 3]}"
                         })
                         i += 4
@@ -306,7 +310,7 @@ class BalineseVPParser:
                         continue
                     elif is_description(tokens[i + 3]):
                         structures.append({
-                            'type': 'SPOKet (Subject-Predicate-Object-Description)',
+                            'type': 'S P O Ket (Subject-Predicate-Object-Description)',
                             'phrase': f"{tokens[i]} {tokens[i + 1]} {tokens[i + 2]} {tokens[i + 3]}"
                         })
                         i += 4
@@ -318,7 +322,7 @@ class BalineseVPParser:
                 if is_subject(tokens[i]) and is_predicate(tokens[i + 1]):
                     if get_object_type(tokens[i + 2]):
                         structures.append({
-                            'type': 'SPO (Subject-Predicate-Object)',
+                            'type': 'S P O (Subject-Predicate-Object)',
                             'phrase': f"{tokens[i]} {tokens[i + 1]} {tokens[i + 2]}"
                         })
                         i += 3
@@ -326,7 +330,7 @@ class BalineseVPParser:
                         continue
                     elif is_complement(tokens[i + 2]):
                         structures.append({
-                            'type': 'SPPel (Subject-Predicate-Complement)',
+                            'type': 'S P Pel (Subject-Predicate-Complement)',
                             'phrase': f"{tokens[i]} {tokens[i + 1]} {tokens[i + 2]}"
                         })
                         i += 3
@@ -334,7 +338,7 @@ class BalineseVPParser:
                         continue
                     elif is_description(tokens[i + 2]):
                         structures.append({
-                            'type': 'SPKet (Subject-Predicate-Description)',
+                            'type': 'S P Ket (Subject-Predicate-Description)',
                             'phrase': f"{tokens[i]} {tokens[i + 1]} {tokens[i + 2]}"
                         })
                         i += 3
@@ -345,7 +349,7 @@ class BalineseVPParser:
             if i < len(tokens) - 1 and not matched:
                 if is_subject(tokens[i]) and is_predicate(tokens[i + 1]):
                     structures.append({
-                        'type': 'SP (Subject-Predicate)',
+                        'type': 'S P (Subject-Predicate)',
                         'phrase': f"{tokens[i]} {tokens[i + 1]}"
                     })
                     i += 2
