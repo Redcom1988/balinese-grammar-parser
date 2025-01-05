@@ -77,6 +77,24 @@ class BalineseParserGUI:
         
         return words_and_names
 
+    def matches_category(self, category, component):
+        """Check if a category matches a grammar component through expansions"""
+        if category == component:
+            return True
+        if component not in self.grammar:
+            return False
+            
+        # For VP -> Verb case
+        if component == 'P' and category == 'Verb':
+            return 'VP' in self.grammar[component] and 'Verb' in self.grammar['VP']
+            
+        # For other direct expansions
+        for expansion in self.grammar[component]:
+            exp_parts = expansion.split()
+            if category in exp_parts:
+                return True
+        return False
+
     def parse_sentence(self):
         sentence = self.input_text.get().strip()
         if not sentence:
@@ -126,18 +144,12 @@ class BalineseParserGUI:
                     valid = False
                     break
                     
-                if component in self.grammar:
-                    matched = False
-                    for expansion in self.grammar[component]:
-                        if remaining_categories[0] in expansion.split():
-                            matched = True
-                            current_pattern.append(component)
-                            remaining_categories.pop(0)
-                            break
-                    
-                    if not matched:
-                        valid = False
-                        break
+                if self.matches_category(remaining_categories[0], component):
+                    current_pattern.append(component)
+                    remaining_categories.pop(0)
+                else:
+                    valid = False
+                    break
 
             if valid and not remaining_categories:
                 valid_structure = True
