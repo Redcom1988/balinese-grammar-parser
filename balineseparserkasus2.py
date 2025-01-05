@@ -20,7 +20,7 @@ class BalineseParserGUI:
             'NP': ['Noun', 'NP Det', 'Pronoun', 'NP Pronoun', 'NP Adj', 'Num NP', 'NP Prep', 'Adj NP', 'NumP NP'],
             'VP': ['Verb', 'Adv Verb', 'Verb Adv', 'Verb O', 'Verb Prep O', 'Verb NP', 'Verb AdjP', 'Verb PP'],
             'PP': ['Prep Noun', 'Prep Pronoun', 'Prep Det Noun', 'Prep Adj Noun', 'Prep Num Noun', 'Prep NP', 'Prep PP', 'Prep Name'],
-            'AdjP': ['Adj', 'AdjP Noun', 'AdjP Adv', 'AdjP Prep'],
+            'AdjP': ['Adj Noun', 'Adj Adv', 'Adj Prep'],
             'NumP': ['Num', 'NumP Noun', 'NumP Det Noun', 'NumP Adj Noun', 'NumP PP', 'NumP Pronoun']
         }
 
