@@ -47,13 +47,21 @@ class BalineseParserGUI:
 
         # Example section
         ttk.Label(main_frame, text="Example sentences:").grid(row=5, column=0, sticky=tk.W, pady=(10,0))
-        examples = """
-        1. "Rama" ngajeng (Rama makan)
-        2. "Adika" nguberin layangan (Adika mengejar layangan)
-        3. "Made" numbas baju ring "Kadek" (Made membeli baju dari Kadek)
-        4. "Upin" kapah nongos di Badung (Upin jarang tinggal di Badung)
-        """
-        ttk.Label(main_frame, text=examples).grid(row=6, column=0, sticky=tk.W)
+        examples = ("1. \"Rama\" ngajeng (Rama makan)\n"
+                "2. \"Adika\" nguberin layangan (Adika mengejar layangan)\n"
+                "3. \"Made\" numbas baju ring \"Kadek\" (Made membeli baju dari Kadek)\n"
+                "4. \"Upin\" kapah nongos di Badung (Upin jarang tinggal di Badung)")
+
+        # Create a read-only Text widget for examples
+        examples_text = tk.Text(main_frame, height=5, width=80, wrap=tk.WORD)
+        examples_text.grid(row=6, column=0, sticky=tk.W)
+        examples_text.insert('1.0', examples)
+        examples_text.configure(state='disabled', 
+                            bg=self.root.cget('bg'), 
+                            relief='flat', 
+                            cursor='arrow') 
+        # Allow selection even in disabled state
+        examples_text.bind('<Control-c>', lambda e: examples_text.event_generate('<<Copy>>'))
 
     def extract_words_and_names(self, sentence):
         """
