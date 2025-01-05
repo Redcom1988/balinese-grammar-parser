@@ -16,6 +16,9 @@ class BalineseVPParserGUI:
             'S': ['NP', 'Name' 'Name Det', ],
             'P': ['VP'], 
             'O': ['NP', 'Name'],
+            'S': ['Noun', 'Name'],
+            'P': ['Verb', 'VP'], 
+            'O': ['Noun', 'Name'],
             'Pel': ['NP', 'PP', 'AdjP', 'NumP', 'VP', 'Name'],
             'Ket': ['PP'],
             'NP': ['Noun Adj'],
@@ -28,18 +31,18 @@ class BalineseVPParserGUI:
                     'Pronoun Verb Adj', # ia mejalan enggal
                     'Pronoun Verb Object' # tiang maem nasi
                     ],
+            # 'VP': ['Adv Verb', 'Verb Adv', 'Adv Adj Verba', 'Prep Verb', 'Verb Prep'], # Versi berbagai sumber
+            # 'VP': ['Noun Verb', 'Adv Verb', 'Verb Adv', 'Adj Verb', 'Verb Adj', 'Prep Verb', 'Verb Prep', 'Pronoun Verb'],
+            'VP': ['Noun intransitiveVerb','Noun transitiveVerb Noun',
+                   'Name intransitiveVerb','Name transitiveVerb Name',
+                   'Name transitiveVerb Noun','Noun transitiveVerb Name',
+                   'Noun contextDependentVerb'],
             'AdjP': ['Adv Adj','Adj Adv'],
             'PP': ['Prep Noun'],
             'NumP': ['Num Noun']
-            # 'NP': ['Noun', 'NP Det', 'Pronoun', 'NP Pronoun', 'NP Adj', 'Num NP'],
-            # 'VP': ['Verb', 'Adv Verb', 'Verb Adv', 'Verb O', 'Verb PP', 'Noun AdjP'],  # VP patterns
-            # 'PP': ['Prep NP', 'Prep Noun', 'Prep Pronoun', 'Prep Name'],
-            # 'AdjP': ['Adj Adv'],
-            # 'NumP': ['Num', 'Num Noun']
         }
 
         self.words = words
-        
         self.setup_gui()
 
     def setup_gui(self):
