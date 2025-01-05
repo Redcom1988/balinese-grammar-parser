@@ -177,6 +177,7 @@ words = {
         'pateh', 'patuh', 'soroh', 'minab', 'jenenga', 'pepes', 'ping', 'wantah',
         'wenten', 'kantun', 'ngararis', 'raris', 'mangkin', 'pisan', 'jagi'
     ],
+    # Kata Depans
     'Prep': [
         'ring', 'ba', 'ka', 'saking', 'uli', 'duk', 'olih',
         'di', 'ke', 'uli', 'sig', 'antuk', 'maring', 'marep',
@@ -186,14 +187,14 @@ words = {
         'ring tengah', 'ring sisin', 'ring bucun', 'ka jaba', 'ka jeroan',
         'saking jaba', 'saking jeroan', 'olih ring', 'rauh ring', 'kantos ring',
         'ngantos ring', 'sadurung ring', 'sasampun ring', 'sajabaning ring',
-        'sajeroning ring', 'sane ring', 'sane maring', 'sane antuk', 'ring', 'di',
+        'sajeroning ring', 'sane ring', 'sane maring', 'sane antuk', 'ring',
         'margi', 'ngangin', 'ngauh', 'ngaja', 'ngelod', 'menek', 'tuun',
         'kebet', 'kelawan', 'sareng', 'teken', 'ajak', 'kayang', 'kanti',
         'sambil', 'sedekan', 'sedek', 'risedek', 'rikala', 'dugase', 'dugas',
         'daweg', 'ritatkala', 'olih', 'antuk', 'maring', 'sareng',
         'teken', 'ajak', 'ngajak', 'bareng', 'ngiring', 'sameton', 'nyama',
         'braya', 'kulawarga', 'kadang', 'wargi', 'arsa', 'sumeken', 
-        'sajeroning', 'tengahing', 'ngawit', 'kayang', 'rauh'
+        'sajeroning', 'tengahing', 'ngawit', 'kayang', 'rauh', 'ajak', 'jak'
     ],
     'Pronoun': [
         'tiang', 'cang', 'iragane', 'ci', 'ia', 'ida', 'nyane', 'kami', 'iraga',

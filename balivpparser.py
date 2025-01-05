@@ -12,13 +12,22 @@ class BalineseVPParserGUI:
         # Grammar rules focused on VP patterns
         self.grammar = {
             'K': ['S P', 'S P O', 'S P Pel', 'S P Ket', 'S P O Pel', 'S P O Ket', 'S P O Pel Ket'],
-            'S': ['NP', 'Name'],
+            # 'S': ['NP', 'Name'],
+            'S': ['NP', 'Name' 'Name Det', ],
             'P': ['VP'], 
             'O': ['NP', 'Name'],
             'Pel': ['NP', 'PP', 'AdjP', 'NumP', 'VP', 'Name'],
             'Ket': ['PP'],
             'NP': ['Noun Adj'],
-            'VP': ['Adv Verb', 'Adv Adj Verba', 'Prep Verb'],
+            # 'VP': ['Adv Verb', 'Adv Adj Verba', 'Prep Verb', 'Verb Noun', 'Noun Verb'],
+            'VP': [ 'Noun Verb',
+                    'Pronoun Adv Verb' # Tiang kapah melajah
+                    'Adv Verb Noun', # Sering membaca buku, sering makan nasi, sering minum air, sering bermain bola
+                    'Verb Adv', # berjalan cepat, Bekerja Keras
+                    'Verb Prep Object', # mejalan ke dapur, maplalian ke Taman
+                    'Pronoun Verb Adj', # ia mejalan enggal
+                    'Pronoun Verb Object' # tiang maem nasi
+                    ],
             'AdjP': ['Adv Adj','Adj Adv'],
             'PP': ['Prep Noun'],
             'NumP': ['Num Noun']
