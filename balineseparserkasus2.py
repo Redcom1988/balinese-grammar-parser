@@ -85,23 +85,44 @@ class BalineseParserGUI:
         
         return words_and_names
 
-    def matches_category(self, category, component):
-        """Check if a category matches a grammar component through expansions"""
-        if category == component:
-            return True
+    def matches_category(self, remaining_categories, component):
+        """Check if categories match a grammar component through expansions"""
+        if not remaining_categories:
+            return False, 0
+                
+        if remaining_categories[0] == component:
+            return True, 1
+                
         if component not in self.grammar:
-            return False
-            
-        # For VP -> Verb case
-        if component == 'P' and category == 'Verb':
-            return 'VP' in self.grammar[component] and 'Verb' in self.grammar['VP']
-            
-        # For other direct expansions
+            return False, 0
+
+        # For VP cases
+        if component == 'P':
+            # Check for Verb alone
+            if remaining_categories[0] == 'Verb':
+                return True, 1
+            # Check for Adv Verb pattern
+            elif len(remaining_categories) >= 2 and remaining_categories[0] == 'Adv' and remaining_categories[1] == 'Verb':
+                return True, 2
+
+        # For PP (Ket) case - check for Prep + Noun pattern
+        if (component == 'Ket' or component == 'PP') and len(remaining_categories) >= 2:
+            if remaining_categories[0] == 'Prep' and remaining_categories[1] == 'Noun':
+                return True, 2
+
+        # For other direct matches in grammar rules
         for expansion in self.grammar[component]:
-            exp_parts = expansion.split()
-            if category in exp_parts:
-                return True
-        return False
+            parts = expansion.split()
+            if len(remaining_categories) >= len(parts):
+                all_match = True
+                for i, part in enumerate(parts):
+                    if remaining_categories[i] != part and part not in self.grammar:
+                        all_match = False
+                        break
+                if all_match:
+                    return True, len(parts)
+
+        return False, 0
 
     def parse_sentence(self):
         sentence = self.input_text.get().strip()
@@ -152,9 +173,13 @@ class BalineseParserGUI:
                     valid = False
                     break
                     
-                if self.matches_category(remaining_categories[0], component):
+                matched, words_to_consume = self.matches_category(remaining_categories, component)
+                if matched:
                     current_pattern.append(component)
-                    remaining_categories.pop(0)
+                    # Remove the matched words
+                    for _ in range(words_to_consume):
+                        if remaining_categories:
+                            remaining_categories.pop(0)
                 else:
                     valid = False
                     break
@@ -175,18 +200,35 @@ class BalineseParserGUI:
             
             # Show the role of each word
             self.result_text.insert(tk.END, "\nWord roles:\n")
-            for word, category in zip(original_words, categories):
+            i = 0
+            while i < len(original_words):
+                if i < len(original_words) - 1:
+                    # Handle Adv + Verb case
+                    if categories[i] == 'Adv' and categories[i+1] == 'Verb':
+                        self.result_text.insert(tk.END, f"{original_words[i]} {original_words[i+1]}: P\n")
+                        i += 2
+                        continue
+                    # Handle Prep + Noun case
+                    if categories[i] == 'Prep' and categories[i+1] == 'Noun':
+                        self.result_text.insert(tk.END, f"{original_words[i]} {original_words[i+1]}: Ket\n")
+                        i += 2
+                        continue
+                
+                word = original_words[i]
+                category = categories[i]
                 role = ''
                 if category == 'Name':
-                    if categories.index(category) == 0:
+                    if i == 0:
                         role = 'Subject'
-                    elif matching_pattern.split()[1] == 'P' and categories.index(category) == 2:
+                    elif matching_pattern.split()[1] == 'P' and i == 2:
                         role = 'Object'
                     else:
                         role = 'Complement'
                 else:
                     role = category
                 self.result_text.insert(tk.END, f"{word}: {role}\n")
+                i += 1
+
         else:
             self.result_text.insert(tk.END, "No valid sentence structure found.\n")
             self.result_text.insert(tk.END, "Please check the grammar rules and word order.\n")
