@@ -55,7 +55,8 @@ words = {
         'gedang', 'belimbing', 'ceroring', 'delima', 'durén', 'jambu', 'juét',
         'manggis', 'nangka', 'nyambu', 'paya', 'sotong', 'tibah', 'wani',
         'bengkuang', 'boni', 'buluan', 'bunut', 'kepundung', 'kuweni', 'sentul',
-        'silik', 'srikaya', 'sukun', 'tin', 'tingkih', 'timbul', 'rambutan'
+        'silik', 'srikaya', 'sukun', 'tin', 'tingkih', 'timbul', 'rambutan', 'sekolah',
+        'alit-alite'
     ],
     # Kata Kerja
     'Verb': [
@@ -64,17 +65,17 @@ words = {
         'ngaturang', 'muspa', 'mabanten', 'ngayah', 'metanding', 'ngigel', 'makekawin',
         'makidung', 'nganteb', 'ngaturang', 'mategen', 'malayang', 'nanding',
         'ngastawa', 'masemayut', 'ngarga', 'ngamel', 'ngoton', 'masolah', 'ngocek',
-        'nyurat', 'ngukir', 'nyangih', 'ngigel', 'mesuara', 'nganggit', 'ngepung',
+        'nyurat', 'ngukir', 'nyangih', 'mesuara', 'nganggit', 'ngepung',
         'majalan', 'merebah', 'mebikas', 'mekamben', 'mesaput', 'ngaturang',
         'ngayah', 'metajen', 'megambel', 'megending', 'mekumpul', 'mebanten',
         'mekarya', 'ngadol', 'numbas', 'madaar', 'ngidih', 'nyilih', 'ngutang',
         'ngadep', 'ngisidang', 'mesuun', 'negul', 'ningalin', 'ngerasang', 
-        'ngajeng', 'nguberin', 'numbas', 'nongos', 'ajak',
-        'ngigel', 'ngebah', 'nyangkol', 'nuturang', 'ngenah', 'ningeh', 'ngadek',
+        'nguberin', 'numbas', 'nongos', 'ajak',
+        'ngebah', 'nyangkol', 'nuturang', 'ngenah', 'ningeh', 'ngadek',
         'ngecap', 'ngetel', 'ngutang', 'nyemak', 'ngejang', 'nyemak', 'ngaba',
-        'ngateh', 'nyarup', 'ngecum', 'nginem', 'ngajeng', 'medaar', 'masare',
+        'ngateh', 'nyarup', 'ngecum', 'nginem', 'medaar', 'masare',
         'medem', 'bangun', 'matangi', 'makecos', 'makecog', 'makejer', 'magebur',
-        'majemuh', 'ngendih', 'ngenyat', 'ngedum', 'ngigel', 'ngecek', 'ngraos',
+        'majemuh', 'ngendih', 'ngenyat', 'ngedum', 'ngecek', 'ngraos',
         'matutur', 'masesandan', 'makeengan', 'makisid', 'makeber', 'nglayang',
         'nyiksik', 'nyangket', 'ngejer', 'ngebug', 'nglungo', 'majalan', 'melaib',
         'nglangi', 'ngeling','ngamah', 'nyiup', 'negakin', 'nulungin', 'nyampat', 'ngumbah', 'nyemak',
@@ -133,7 +134,9 @@ words = {
         'ngonemin', 'ngorahang', 'ngortain', 'ngosong', 'ngoyong', 'ngubadin', 'ngubuhin',
         'nguduhin', 'ngulapin', 'ngulatin', 'nguliang', 'ngulurin', 'ngumpulang',
         'ngumpulin', 'ngundebang', 'ngundigang', 'nguntulang', 'ngupayang', 'nguratiang',
-        'ngurukang', 'ngutangag', 'ngutsahayang', 'nguwuhin', 'nyelapang', 'nyelempang'
+        'ngurukang', 'ngutangag', 'ngutsahayang', 'nguwuhin', 'nyelapang', 'nyelempang', 
+        'malajah', 'makarya', 'meli', 'meliang', 'ngai', 'ngelah', 'ngamaang', 'nyemakang',
+        'polih', 'numbas', 'dados', 'magae', 'nongos', 'luas',
     ],
     # Kata Sifat
     'Adj': [
@@ -164,21 +167,21 @@ words = {
         'nanghing', 'sakadi', 'minab', 'munguin', 'sasidan', 'wiakti', 'yakti',
         'sajawi', 'sadurung', 'sampunika', 'sapunika', 'asapunika', 'sapunapi',
         'asapunapi', 'menawi', 'meneng', 'meled', 'ngiring', 'dumun', 'mangda',
-        'mangkin', 'raris', 'wusan', 'gelis', 'wawu', 'kantun', 'sampun', 'dados',
+        'mangkin', 'raris', 'wusan', 'wawu', 'kantun', 'dados',
         'durung', 'kapah', 'malih',
         'nadaksara', 'prajani', 'gelis-gelis', 'alon-alon', 'adeng-adeng',
         'sai-sai', 'pepes', 'terus', 'lantas', 'malih', 'buin', 'suba', 'mara',
-        'wau', 'sampun', 'durung', 'nenten', 'ten', 'tusing', 'ngiring', 'dados',
+        'wau', 'durung', 'nenten', 'ten', 'tusing', 'ngiring', 'dados',
         'bisa', 'prasida', 'mampuh', 'nyidayang', 'sabenehne', 'sayuwakti',
         'sajatine', 'sujatine', 'wiakti', 'sekadi', 'minakadi', 'kadi', 'sakadi',
         'pateh', 'patuh', 'soroh', 'minab', 'jenenga', 'pepes', 'ping', 'wantah',
-        'wenten', 'sampun', 'kantun', 'ngararis', 'raris', 'mangkin', 'benjang',
+        'wenten', 'kantun', 'ngararis', 'raris', 'mangkin', 'pisan', 'jagi'
     ],
     'Prep': [
         'ring', 'ba', 'ka', 'saking', 'uli', 'duk', 'olih',
-        'di', 'ke', 'uli', 'sig', 'saking', 'antuk', 'ring', 'maring', 'marep',
-        'ngajeng', 'duri', 'beten', 'duur', 'tengah', 'samping', 'sisi', 'jaba',
-        'jeroan', 'kelod', 'kaja', 'kangin', 'kauh', 'tengahan', 'sisin', 'sedin',
+        'di', 'ke', 'uli', 'sig', 'antuk', 'maring', 'marep',
+        'duri', 'beten', 'duur', 'tengah', 'samping', 'sisi', 'jaba',
+        'kelod', 'kaja', 'kangin', 'kauh', 'tengahan', 'sisin', 'sedin',
         'bucun', 'diwangan', 'sajabaning', 'sajeroning', 'ring ajeng', 'ring duri',
         'ring tengah', 'ring sisin', 'ring bucun', 'ka jaba', 'ka jeroan',
         'saking jaba', 'saking jeroan', 'olih ring', 'rauh ring', 'kantos ring',
@@ -187,30 +190,44 @@ words = {
         'margi', 'ngangin', 'ngauh', 'ngaja', 'ngelod', 'menek', 'tuun',
         'kebet', 'kelawan', 'sareng', 'teken', 'ajak', 'kayang', 'kanti',
         'sambil', 'sedekan', 'sedek', 'risedek', 'rikala', 'dugase', 'dugas',
-        'daweg', 'ritatkala', 'olih', 'antuk', 'ring', 'maring', 'sareng',
+        'daweg', 'ritatkala', 'olih', 'antuk', 'maring', 'sareng',
         'teken', 'ajak', 'ngajak', 'bareng', 'ngiring', 'sameton', 'nyama',
-        'braya', 'kulawarga', 'kadang', 'wargi', 'arsa', 'sumeken', 'ngajengn',
-        'sajeroning', 'tengahing', 'saking', 'ngawit', 'kayang', 'rauh', 'ring'
+        'braya', 'kulawarga', 'kadang', 'wargi', 'arsa', 'sumeken', 
+        'sajeroning', 'tengahing', 'ngawit', 'kayang', 'rauh'
     ],
     'Pronoun': [
         'tiang', 'cang', 'iragane', 'ci', 'ia', 'ida', 'nyane', 'kami', 'iraga',
-        'idane', 'dane', 'niki', 'nenten', 'nikanne', 'ikane', 'sapa', 'sapunapi',
+        'idane', 'dane', 'nenten', 'nikanne', 'ikane', 'sapa', 
         'puniki', 'punapi', 'titiang', 'icang', 'kai', 'jerone', 'ragane', 'gusi',
         'cai', 'iba', 'ipun',
         'gelah', 'dewek', 'awakne', 'ida-dane', 'sira', 'ipun-ipun', 'rerama',
         'okane', 'putrane', 'okan-okane', 'putran-putrane', 'ragan-ragane',
         'sami', 'samian', 'samiyan', 'sinamian', 'parasida', 'parasami',
         'parajana', 'parajanma', 'parajero', 'parasane', 'paranirane',
-        'parasapasira', 'parasapasami', 'puniki', 'punika', 'puniku', 'punikine',
-        'punikane', 'punikune', 'niki', 'nika', 'niku', 'nikine', 'nikane',
-        'nikune', 'ene', 'ento', 'anu', 'ane', 'ne', 'to', 'niki-nika',
-        'puniki-punika', 'sira-sira', 'sapasira', 'sapasami', 'sapunapi-sapunapi',
+        'parasapasira', 'parasapasami', 'puniku', 
+        'punikune', 'niki', 'nika', 'niku',
+        'sira-sira', 'sapasira', 'sapasami', 'sapunapi-sapunapi',
         'manira', 'gelah', 'nira', 'ira', 'ratu', 'cokor', 'palungguh',
-        'dane', 'ipun', 'rerama', 'meme', 'bapa', 'biang', 'aji', 'bibi',
+        'dane', 'rerama', 'meme', 'bapa', 'biang', 'aji', 'bibi',
         'uwa', 'pekak', 'dadong', 'kakiang', 'niang', 'embok', 'beli',
         'misan', 'mindon', 'kumpi', 'buyut', 'canggah', 'wareng', 'kelab',
         'uduh', 'klabang', 'gantung', 'siwer', 'ratu', 'dewa', 'betara',
-        'widhi', 'hyang', 'ida', 'dané', 'ragané', 'ipun', 'titiang',
+        'widhi', 'hyang', 'ida', 'dané', 'ragané', 'titiang',
         'iragang', 'gelahé', 'awakné', 'dewekné', 'ragané', 'idané'
+    ],
+    'Det': [
+        'niki', 'nika', 'puniki', 'punika', 'ene', 'ento', 'ne', 'to',
+        'anu', 'ane', 'punikine', 'punikane', 'punikune', 'nikine', 'nikane',
+        'nikune', 'niki-nika', 'puniki-punika'
+    ],
+    'Num': [
+        # Cardinal numbers
+        'besik', 'kalih', 'tiga', 'papat', 'lima', 'nem', 'pitu', 'kutus', 'sia', 'dasa',
+        # Ordinal numbers
+        'kapertama', 'kaping kalih', 'kaping tiga', 'kaping papat', 'kaping lima',
+        # Collective numbers
+        'aketi', 'asiu', 'ayu', 'atus', 'adasa',
+        # Fractional numbers
+        'aparo', 'duang paro', 'telung paro'
     ]
 }
