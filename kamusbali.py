@@ -61,8 +61,7 @@ words = {
     'Adj': [
         'alus', 'becik', 'bagus', 'endah', 'gede', 'luas', 'lemah', 'sugih', 'dueg',
         'siteng', 'kenyel', 'banyol', 'mayus', 'ajum', 'bedak', 'seduk', 'betek', 'jaen',
-        'barak',
-        'ayu', 'jegeg', 'bagus', 'kasub', 'wayah', 'nguda', 'tua', 'bajang',
+        'barak', 'ayu', 'jegeg', 'bagus', 'kasub', 'wayah', 'nguda', 'tua', 'bajang',
         'lacur', 'sukil', 'melah', 'jele', 'suci', 'leteh', 'pingit', 'umum',
         'tenget', 'angker', 'sakti', 'wisesa', 'weruh', 'wikan', 'pradnyan',
         'tambet', 'belog', 'ririh', 'jemet', 'mayus', 'demen', 'gedeg', 'sebet',
@@ -75,8 +74,9 @@ words = {
         'inguh', 'ibuk', 'sengsara', 'bagia', 'lascarya', 'kejem', 'galak',
         'someh', 'ramah', 'darma', 'adil', 'polos', 'jujur', 'dusta', 'lengit',
         'ilang', 'telah', 'rumpuh', 'seger', 'kebus', 'dingin', 'nyem', 'jemet',
-        'males', 'kirangan', 'tabah'
-    ],
+        'males', 'kirangan', 'tabah',
+    ], 
+    # Kata Keterangan 
     'Adv': [
         'kapah', 'sesai', 'dibi', 'benjang', 'kejep', 'tuni', 'puan', 'nyanan',
         'jani', 'semengan', 'tengai', 'sanja', 'wengi',
