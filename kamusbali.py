@@ -188,7 +188,7 @@ words = {
         'ngosong', 'ngubadin', 'ngubuhin', 'nguduhin', 'ngulapin', 'ngulatin', 'nguliang', 
         'ngulurin', 'ngumpulang', 'ngumpulin', 'ngundebang', 'ngundigang', 'nguntulang', 
         'ngupayang', 'ngurukang', 'ngutangag', 'ngutsahayang', 'nguwuhin', 'nyelapang', 
-        'nyelempang', 'merasa', 'bangun', 'maem'
+        'nyelempang', 'merasa', 'bangun', 'maem', "nyapa"
     ],
     'contextDependentVerb': [
         'malajah',      # can study (intransitive) or study something (transitive)
