@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 import re
+from kamusbali import words
 
 class BalineseParserGUI:
     def __init__(self, root):
@@ -23,133 +24,7 @@ class BalineseParserGUI:
             'NumP': ['Num', 'NumP Noun', 'NumP Det Noun', 'NumP Adj Noun', 'NumP PP', 'NumP Pronoun']
         }
 
-        # Extended word categories
-        self.words = {
-            'Noun': [
-                'liat', 'laib', 'adeg', 'ater', 'ider', 'ayah', 'uruk', 'arep', 'ibing', 'arit',
-                'gergaji', 'rauh', 'ukir', 'tegul', 'tebus', 'beli', 'iket', 'tampi', 'uber',
-                'gebug', 'kucit', 'kusir', 'togog', 'umah', 'dewa', 'pura', 'meme', 'adi',
-                'tiuk', 'leak', 'raksasa', 'jukut', 'motor', 'jukung', 'emas',
-                'jaring', 'uyah', 'sate', 'cedok', 'cekalan', 'kursi', 'gunung', 'angin',
-                'keneh', 'sepatu', 'baju', 'tanah', 'kayu', 'atma', 'bunyi', 'suarga',
-                'neraka', 'alas', 'dharma', 'taksu', 'sukerta', 'genta', 'pelawa', 'tedung',
-                'guru', 'pandita', 'raja', 'teben', 'jineng', 'setra', 'tukad', 'segara',
-                'canang', 'bhuana', 'bale', 'sanggah', 'pelinggih', 'natah', 'merajan', 'subak', 'carik',
-                'tenget', 'balian', 'pecalang', 'kulkul', 'gamelan', 'gender', 'rindik',
-                'canangsari', 'banten', 'sesajen', 'kober', 'umbul-umbul', 'gebogan',
-                'pecaruan', 'padmasana', 'panggungan', 'gedong', 'paon', 'tembok',
-                'lelangit', 'bantang', 'tulang', 'kulit', 'getih', 'lengen', 'lima',
-                'jeroan', 'kelapa', 'base', 'don', 'bunga', 'woh', 'padang', 'abing',
-                'tegal', 'uma', 'sema', 'pura', 'mrajan', 'jaba', 'kaja', 'kelod',
-                'kangin', 'kauh', 'bebanten', 'tirta', 'yadnya', 'penjor', 'layangan', 'baju', 'badung',
-                'sanglah', 'pasar', 'warung', 'jalikan', 'ketipat', 'jaja', 'arak', 'tuak', 
-                'payuk', 'panci', 'semprong', 'kompor', 'siap', 'sampi', 'celeng', 'bangkung',
-                'bikul', 'lelipi', 'katak', 'kedis', 'siap', 'bebek', 'meong', 'cicing',
-                'punyan', 'entik', 'biu', 'poh', 'nangka', 'durian', 'salak', 'wani',
-                'bingin', 'kepuh', 'delima', 'sumaga', 'jeruk', 'belimbing', 'nyuh',
-                'jagung', 'padi', 'kacang', 'ketela', 'kesela', 'tabia', 'bawang',
-                'jahe', 'kunyit', 'lengkuas', 'cengkeh', 'pala', 'kemiri', 'kayu'
-            ],
-            'Verb': [
-                'melajah', 'megae', 'maplalian', 'nulis', 'memaca', 'melaib', 'mejalan',
-                'negak', 'megedi', 'ulung', 'ngajeng', 'minum', 'teka', 'atoang', 'menek',
-                'ngaturang', 'muspa', 'mabanten', 'ngayah', 'metanding', 'ngigel', 'makekawin',
-                'makidung', 'nganteb', 'ngaturang', 'mategen', 'malayang', 'nanding',
-                'ngastawa', 'masemayut', 'ngarga', 'ngamel', 'ngoton', 'masolah', 'ngocek',
-                'nyurat', 'ngukir', 'nyangih', 'ngigel', 'mesuara', 'nganggit', 'ngepung',
-                'majalan', 'merebah', 'mebikas', 'mekamben', 'mesaput', 'ngaturang',
-                'ngayah', 'metajen', 'megambel', 'megending', 'mekumpul', 'mebanten',
-                'mekarya', 'ngadol', 'numbas', 'madaar', 'ngidih', 'nyilih', 'ngutang',
-                'ngadep', 'ngisidang', 'mesuun', 'negul', 'ningalin', 'ngerasang', 
-                'ngajeng', 'nguberin', 'numbas', 'nongos', 'ajak',
-                'ngigel', 'ngebah', 'nyangkol', 'nuturang', 'ngenah', 'ningeh', 'ngadek',
-                'ngecap', 'ngetel', 'ngutang', 'nyemak', 'ngejang', 'nyemak', 'ngaba',
-                'ngateh', 'nyarup', 'ngecum', 'nginem', 'ngajeng', 'medaar', 'masare',
-                'medem', 'bangun', 'matangi', 'makecos', 'makecog', 'makejer', 'magebur',
-                'majemuh', 'ngendih', 'ngenyat', 'ngedum', 'ngigel', 'ngecek', 'ngraos',
-                'matutur', 'masesandan', 'makeengan', 'makisid', 'makeber', 'nglayang',
-                'nyiksik', 'nyangket', 'ngejer', 'ngebug', 'nglungo', 'majalan', 'melaib',
-                'nglangi', 'ngeling'
-            ],
-            'Adj': [
-                'alus', 'becik', 'bagus', 'endah', 'gede', 'luas', 'lemah', 'sugih', 'dueg',
-                'siteng', 'kenyel', 'banyol', 'mayus', 'ajum', 'bedak', 'seduk', 'betek', 'jaen',
-                'barak',
-                'ayu', 'jegeg', 'bagus', 'kasub', 'wayah', 'nguda', 'tua', 'bajang',
-                'lacur', 'sukil', 'melah', 'jele', 'suci', 'leteh', 'pingit', 'umum',
-                'tenget', 'angker', 'sakti', 'wisesa', 'weruh', 'wikan', 'pradnyan',
-                'tambet', 'belog', 'ririh', 'jemet', 'mayus', 'demen', 'gedeg', 'sebet',
-                'liang', 'emed', 'seleg', 'anteng', 'ramé', 'suung', 'tegeh', 'endep',
-                'lantang', 'bawak', 'linggah', 'cupit', 'teleb', 'dayuh', 'anyar',
-                'suba', 'tusing', 'nenten', 'lungha', 'rauh', 'peteng', 'galang',
-                'jelek', 'beneh', 'patut', 'demen', 'gedeg', 'sebet', 'emed', 'nguda',
-                'tua', 'wayah', 'rare', 'cerik', 'kelih', 'gede', 'cenik', 'mokoh',
-                'berag', 'keras', 'aluh', 'keren', 'lanying', 'demen', 'jengah', 'sungsut',
-                'inguh', 'ibuk', 'sengsara', 'bagia', 'lascarya', 'kejem', 'galak',
-                'someh', 'ramah', 'darma', 'adil', 'polos', 'jujur', 'dusta', 'lengit',
-                'ilang', 'telah', 'rumpuh', 'seger', 'kebus', 'dingin', 'nyem', 'jemet',
-                'males', 'kirangan', 'tabah'
-            ],
-            'Adv': [
-                'kapah', 'sesai', 'dibi', 'benjang', 'kejep', 'tuni', 'puan', 'nyanan',
-                'jani', 'semengan', 'tengai', 'sanja', 'wengi',
-                'mangkin', 'durung', 'sampun', 'dados', 'nénten', 'gelis', 'alon',
-                'becik', 'payu', 'malu', 'sekat', 'uwug', 'rihin', 'pegat', 'telat',
-                'enggal', 'serod', 'selid', 'tutug', 'lantas', 'malih', 'kewala',
-                'nanghing', 'sakadi', 'minab', 'munguin', 'sasidan', 'wiakti', 'yakti',
-                'sajawi', 'sadurung', 'sampunika', 'sapunika', 'asapunika', 'sapunapi',
-                'asapunapi', 'menawi', 'meneng', 'meled', 'ngiring', 'dumun', 'mangda',
-                'mangkin', 'raris', 'wusan', 'gelis', 'wawu', 'kantun', 'sampun', 'dados',
-                'durung', 'kapah', 'malih',
-                'nadaksara', 'prajani', 'gelis-gelis', 'alon-alon', 'adeng-adeng',
-                'sai-sai', 'pepes', 'terus', 'lantas', 'malih', 'buin', 'suba', 'mara',
-                'wau', 'sampun', 'durung', 'nenten', 'ten', 'tusing', 'ngiring', 'dados',
-                'bisa', 'prasida', 'mampuh', 'nyidayang', 'sabenehne', 'sayuwakti',
-                'sajatine', 'sujatine', 'wiakti', 'sekadi', 'minakadi', 'kadi', 'sakadi',
-                'pateh', 'patuh', 'soroh', 'minab', 'jenenga', 'pepes', 'ping', 'wantah',
-                'wenten', 'sampun', 'kantun', 'ngararis', 'raris', 'mangkin', 'benjang',
-            ],
-            'Prep': [
-                'ring', 'ba', 'ka', 'saking', 'uli', 'duk', 'olih',
-                'di', 'ke', 'uli', 'sig', 'saking', 'antuk', 'ring', 'maring', 'marep',
-                'ngajeng', 'duri', 'beten', 'duur', 'tengah', 'samping', 'sisi', 'jaba',
-                'jeroan', 'kelod', 'kaja', 'kangin', 'kauh', 'tengahan', 'sisin', 'sedin',
-                'bucun', 'diwangan', 'sajabaning', 'sajeroning', 'ring ajeng', 'ring duri',
-                'ring tengah', 'ring sisin', 'ring bucun', 'ka jaba', 'ka jeroan',
-                'saking jaba', 'saking jeroan', 'olih ring', 'rauh ring', 'kantos ring',
-                'ngantos ring', 'sadurung ring', 'sasampun ring', 'sajabaning ring',
-                'sajeroning ring', 'sane ring', 'sane maring', 'sane antuk', 'ring', 'di',
-                'margi', 'ngangin', 'ngauh', 'ngaja', 'ngelod', 'menek', 'tuun',
-                'kebet', 'kelawan', 'sareng', 'teken', 'ajak', 'kayang', 'kanti',
-                'sambil', 'sedekan', 'sedek', 'risedek', 'rikala', 'dugase', 'dugas',
-                'daweg', 'ritatkala', 'olih', 'antuk', 'ring', 'maring', 'sareng',
-                'teken', 'ajak', 'ngajak', 'bareng', 'ngiring', 'sameton', 'nyama',
-                'braya', 'kulawarga', 'kadang', 'wargi', 'arsa', 'sumeken', 'ngajengn',
-                'sajeroning', 'tengahing', 'saking', 'ngawit', 'kayang', 'rauh', 'ring'
-            ],
-            'Pronoun': [
-                'tiang', 'cang', 'iragane', 'ci', 'ia', 'ida', 'nyane', 'kami', 'iraga',
-                'idane', 'dane', 'niki', 'nenten', 'nikanne', 'ikane', 'sapa', 'sapunapi',
-                'puniki', 'punapi', 'titiang', 'icang', 'kai', 'jerone', 'ragane', 'gusi',
-                'cai', 'iba', 'ipun',
-                'gelah', 'dewek', 'awakne', 'ida-dane', 'sira', 'ipun-ipun', 'rerama',
-                'okane', 'putrane', 'okan-okane', 'putran-putrane', 'ragan-ragane',
-                'sami', 'samian', 'samiyan', 'sinamian', 'parasida', 'parasami',
-                'parajana', 'parajanma', 'parajero', 'parasane', 'paranirane',
-                'parasapasira', 'parasapasami', 'puniki', 'punika', 'puniku', 'punikine',
-                'punikane', 'punikune', 'niki', 'nika', 'niku', 'nikine', 'nikane',
-                'nikune', 'ene', 'ento', 'anu', 'ane', 'ne', 'to', 'niki-nika',
-                'puniki-punika', 'sira-sira', 'sapasira', 'sapasami', 'sapunapi-sapunapi',
-                'manira', 'gelah', 'nira', 'ira', 'ratu', 'cokor', 'palungguh',
-                'dane', 'ipun', 'rerama', 'meme', 'bapa', 'biang', 'aji', 'bibi',
-                'uwa', 'pekak', 'dadong', 'kakiang', 'niang', 'embok', 'beli',
-                'misan', 'mindon', 'kumpi', 'buyut', 'canggah', 'wareng', 'kelab',
-                'uduh', 'klabang', 'gantung', 'siwer', 'ratu', 'dewa', 'betara',
-                'widhi', 'hyang', 'ida', 'dané', 'ragané', 'ipun', 'titiang',
-                'iragang', 'gelahé', 'awakné', 'dewekné', 'ragané', 'idané'
-            ]
-        }
-
+        self.words = words
         self.setup_gui()
 
     def setup_gui(self):
