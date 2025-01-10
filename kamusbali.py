@@ -48,14 +48,14 @@ words = {
         'ring tengah', 'ring sisin', 'ring bucun', 'ka jaba', 'ka jeroan',
         'saking jaba', 'saking jeroan', 'olih ring', 'rauh ring', 'kantos ring',
         'ngantos ring', 'sadurung ring', 'sasampun ring', 'sajabaning ring',
-        'sajeroning ring', 'sane ring', 'sane maring', 'sane antuk', 'ring', 'di',
+        'sajeroning ring', 'sane ring', 'sane maring', 'sane antuk', 'ring',
         'margi', 'ngangin', 'ngauh', 'ngaja', 'ngelod', 'menek', 'tuun',
         'kebet', 'kelawan', 'sareng', 'teken', 'ajak', 'kayang', 'kanti',
         'sambil', 'sedekan', 'sedek', 'risedek', 'rikala', 'dugase', 'dugas',
         'daweg', 'ritatkala', 'olih', 'antuk', 'maring', 'sareng',
         'teken', 'ajak', 'ngajak', 'bareng', 'ngiring', 'sameton', 'nyama',
         'braya', 'kulawarga', 'kadang', 'wargi', 'arsa', 'sumeken', 
-        'sajeroning', 'tengahing', 'ngawit', 'kayang', 'rauh'
+        'sajeroning', 'tengahing', 'ngawit', 'kayang', 'rauh', 'ajak', 'jak'
     ],
     # Kata Ganti
     'Pronoun': [
