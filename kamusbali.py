@@ -1,63 +1,5 @@
 words = {
-    # Kata Benda
-    # 'Noun': [
-    #     'liat', 'laib', 'adeg', 'ater', 'ider', 'ayah', 'uruk', 'arep', 'ibing', 'arit',
-    #     'gergaji', 'rauh', 'ukir', 'tegul', 'tebus', 'beli', 'iket', 'tampi', 'uber',
-    #     'gebug', 'kucit', 'kusir', 'togog', 'umah', 'dewa', 'pura', 'meme', 'adi',
-    #     'tiuk', 'leak', 'raksasa', 'jukut', 'motor', 'jukung', 'emas',
-    #     'jaring', 'uyah', 'sate', 'cedok', 'cekalan', 'kursi', 'gunung', 'angin',
-    #     'keneh', 'sepatu', 'baju', 'tanah', 'kayu', 'atma', 'bunyi', 'suarga',
-    #     'neraka', 'alas', 'dharma', 'taksu', 'sukerta', 'genta', 'pelawa', 'tedung',
-    #     'guru', 'pandita', 'raja', 'teben', 'jineng', 'setra', 'tukad', 'segara',
-    #     'canang', 'bhuana', 'bale', 'sanggah', 'pelinggih', 'natah', 'merajan', 'subak', 'carik',
-    #     'tenget', 'balian', 'pecalang', 'kulkul', 'gamelan', 'gender', 'rindik',
-    #     'canangsari', 'banten', 'sesajen', 'kober', 'umbul-umbul', 'gebogan',
-    #     'pecaruan', 'padmasana', 'panggungan', 'gedong', 'paon', 'tembok',
-    #     'lelangit', 'bantang', 'tulang', 'kulit', 'getih', 'lengen', 'lima',
-    #     'jeroan', 'kelapa', 'base', 'don', 'bunga', 'woh', 'padang', 'abing',
-    #     'tegal', 'uma', 'sema', 'pura', 'mrajan', 'jaba', 'kaja', 'kelod',
-    #     'kangin', 'kauh', 'bebanten', 'tirta', 'yadnya', 'penjor', 'layangan', 'baju', 'badung',
-    #     'sanglah', 'pasar', 'warung', 'jalikan', 'ketipat', 'jaja', 'arak', 'tuak', 
-    #     'payuk', 'panci', 'semprong', 'kompor', 'siap', 'sampi', 'celeng', 'bangkung',
-    #     'bikul', 'lelipi', 'katak', 'kedis', 'siap', 'bebek', 'meong', 'cicing',
-    #     'punyan', 'entik', 'biu', 'poh', 'nangka', 'durian', 'salak', 'wani',
-    #     'bingin', 'kepuh', 'delima', 'sumaga', 'jeruk', 'belimbing', 'nyuh',
-    #     'jagung', 'padi', 'kacang', 'ketela', 'kesela', 'tabia', 'bawang',
-    #     'jahe', 'kunyit', 'lengkuas', 'cengkeh', 'pala', 'kemiri', 'kayu',
-    #     'jelanan', 'ampik', 'kakus', 'undagan', 'sinduk', 'caratan', 'sembe', 'yeh',
-    #     'endut', 'bias', 'bulaan', 'tiing', 'celagih', 'gadung', 'kesuna', 'jepun',
-    #     'gelang', 'kalung', 'subeng', 'udeng', 'kamben', 'saput', 'daksina', 'kajang',
-    #     'dulang', 'sokasi', 'tamiang', 'sampian', 'bebed', 'bebungkilan', 'kebaya',
-    #     'wastra', 'umpal', 'tepeng', 'kuskusan', 'dangdang', 'paso', 'jun', 'gentong',
-    #     'pane', 'kekeb', 'kau', 'tempeh', 'penarak', 'bokor', 'wadah', 'pabuan',
-    #     'cecepan', 'coblong', 'lumur', 'kecer', 'kendang', 'suling', 'gong', 'kempur',
-    #     'kempli', 'gangsa', 'kantil', 'jegog', 'klentung', 'keropak', 'lontar',
-    #     'prasi', 'pecanangan', 'sibuh', 'pedupaan', 'plangkiran', 'dapetan', 'penuntun',
-    #     'telabah', 'carik', 'pekaseh', 'pemangku', 'klian', 'penjor', 'sanggah',
-    #     'pelinggih', 'palinggih', 'tumpek', 'galungan', 'kuningan', 'saraswati',
-    #     'pekarangan', 'tetaring', 'kelir', 'langse', 'aling-aling', 'klatkat',
-    #     'pemesuan', 'pemrajan', 'piasan', 'penyengker', 'angkul-angkul', 'candi',
-    #     'kori', 'tapakan', 'kemulan', 'taksu', 'rong', 'tugu', 'palih', 'undag',
-    #     'pengubengan', 'pangapit', 'pamedal', 'jogan', 'saka', 'sunduk', 'sineb',
-    #     'tetekeh', 'tiang', 'tugeh', 'dedari', 'penunggu', 'balian', 'tapel',
-    #     'rangda', 'barong', 'jauk', 'telek', 'topeng', 'legong', 'pendet',
-    #     'rejang', 'baris', 'sanghyang', 'kecak', 'gambuh', 'arja', 'wayang',
-    #     'dalang', 'geguntangan', 'kendang', 'cengceng', 'gangsa', 'reong',
-    #     'trompong', 'kajar', 'kempul', 'kemong', 'jegogan', 'jublag', 'penyacah',
-    #     'kantilan', 'pemade', 'kenong', 'kelentang', 'kelentung',
-    #     'kekawin', 'kidung', 'geguritan', 'peparikan', 'sendor', 'sunari', 'sesapi',
-    #     'rebab', 'seruling', 'cendekan', 'pepesan', 'lawar', 'betutu', 'urutan',
-    #     'timbungan', 'bantal', 'tum', 'sate', 'komoh', 'rujak', 'sambal', 'jukut',
-    #     'pesan', 'gecok', 'urab', 'serombotan', 'plecing', 'sambel', 'sumping',
-    #     'jaja', 'dodol', 'begina', 'satuh', 'bendu', 'lempog', 'klepon', 'tulung',
-    #     'nagasari', 'apem', 'bubuh', 'tepeng', 'timpan', 'laklak', 'panggang',
-    #     'pepes', 'urap', 'blayag', 'temisi', 'besisit', 'timbung', 'saur', 'siap',
-    #     'gedang', 'belimbing', 'ceroring', 'delima', 'durén', 'jambu', 'juét',
-    #     'manggis', 'nangka', 'nyambu', 'paya', 'sotong', 'tibah', 'wani',
-    #     'bengkuang', 'boni', 'buluan', 'bunut', 'kepundung', 'kuweni', 'sentul',
-    #     'silik', 'srikaya', 'sukun', 'tin', 'tingkih', 'timbul', 'rambutan', 'sekolah',
-    #     'alit-alite', 'meja'
-    # ],
+    # Kata Sifat
     'Adj': [
         'alus', 'becik', 'bagus', 'endah', 'gede', 'luas', 'lemah', 'sugih', 'dueg',
         'siteng', 'kenyel', 'banyol', 'mayus', 'ajum', 'bedak', 'seduk', 'betek', 'jaen',
@@ -96,6 +38,7 @@ words = {
         'pateh', 'patuh', 'soroh', 'minab', 'jenenga', 'pepes', 'ping', 'wantah',
         'wenten', 'kantun', 'ngararis', 'raris', 'mangkin', 'pisan', 'jagi'
     ],
+    # Preposisi
     'Prep': [
         'ring', 'ba', 'ka', 'saking', 'uli', 'duk', 'olih',
         'di', 'ke', 'uli', 'sig', 'antuk', 'maring', 'marep',
@@ -114,6 +57,7 @@ words = {
         'braya', 'kulawarga', 'kadang', 'wargi', 'arsa', 'sumeken', 
         'sajeroning', 'tengahing', 'ngawit', 'kayang', 'rauh'
     ],
+    # Kata Ganti
     'Pronoun': [
         'tiang', 'cang', 'iragane', 'ci', 'ia', 'ida', 'nyane', 'kami', 'iraga',
         'idane', 'dane', 'nenten', 'nikanne', 'ikane', 'sapa', 
@@ -134,11 +78,13 @@ words = {
         'widhi', 'hyang', 'ida', 'dané', 'ragané', 'titiang',
         'iragang', 'gelahé', 'awakné', 'dewekné', 'ragané', 'idané'
     ],
+    # Determinan
     'Det': [
         'niki', 'nika', 'puniki', 'punika', 'ene', 'ento', 'ne', 'to',
         'anu', 'ane', 'punikine', 'punikane', 'punikune', 'nikine', 'nikane',
         'nikune', 'niki-nika', 'puniki-punika'
     ],
+    # Nomor
     'Num': [
         # Cardinal numbers
         'besik', 'kalih', 'tiga', 'papat', 'lima', 'nem', 'pitu', 'kutus', 'sia', 'dasa',
@@ -149,6 +95,7 @@ words = {
         # Fractional numbers
         'aparo', 'duang paro', 'telung paro'
     ],
+    # Kata kerja intransitif
     'intransitiveVerb': [
         'mejalan', 'melaib', 'negak', 'teka', 'ulung', 'medem', 'matangi', 
         'nongos', 'luas', 'makecos', 'makecog', 'makeber', 'nglayang', 'nglangi', 
@@ -162,6 +109,7 @@ words = {
         'masemayan', 'masesangi', 'masesapan', 'matektekan', 'matirtayan', 'mayasakala', 
         'malajah', 'tinggal'
     ],
+    # Kata kerja transitif
     'transitiveVerb': [
         'meli', 'numbas', 'meliang', 'ngajeng', 'madaar', 'ngamah', 'minum', 'nginem', 
         'nyemak', 'ngejang', 'ngaba', 'nyuun', 'ngisinin', 'ngutang', 'nyangih', 
@@ -190,6 +138,7 @@ words = {
         'ngupayang', 'ngurukang', 'ngutangag', 'ngutsahayang', 'nguwuhin', 'nyelapang', 
         'nyelempang', 'merasa', 'bangun', 'maem', "nyapa"
     ],
+    # Kata kerja tergantung konteks
     'contextDependentVerb': [
         'malajah',      # can study (intransitive) or study something (transitive)
         'megending',    # can sing (intransitive) or sing something (transitive)
@@ -214,6 +163,7 @@ words = {
     ],
 }
 
+# Kategori kata benda
 nounCategories = {
     'food': ['jaja', 'jukut', 'sate', 'lawar', 'betutu', 'pepesan', 'timbungan', 'urutan', 
              'komoh', 'rujak', 'sambal', 'urab', 'serombotan', 'plecing', 'sambel', 
@@ -295,6 +245,7 @@ nounCategories = {
                   'tedung']
 }
 
+# Pairing kata kerja dengan kategori kata benda
 verbCategoryPairs = {
     # Eating/Drinking verbs
     'ngajeng': ['food'],

@@ -167,17 +167,7 @@ class BalineseVPParser:
                         'phrase': f"{tokens[i]} {tokens[i + 1]} {tokens[i + 2]}"
                     })
 
-            # Rule 10: Adj + Noun + Verb
-            if i < len(tokens) - 2:
-                if (self.get_word_type(tokens[i]) == 'Adj' and
-                        self.is_in_any_noun_category(tokens[i + 1]) and
-                        self.get_word_type(tokens[i + 2]) in ['intransitiveVerb', 'transitiveVerb']):
-                    valid_vps.append({
-                        'type': 'Adjective + Noun + Verb',
-                        'phrase': f"{tokens[i]} {tokens[i + 1]} {tokens[i + 2]}"
-                    })
-
-            # Rule 11: People/Pronoun + Adv + Verb (Baraja sesai malajah, Tiang kapah melajah)
+            # Rule 10: People/Pronoun + Adv + Verb (Baraja sesai malajah, Tiang kapah melajah)
             if i < len(tokens) - 2:
                 if ((self.is_person(tokens[i]) or self.get_word_type(tokens[i]) == 'Pronoun') and
                         self.get_word_type(tokens[i + 1]) == 'Adv' and
@@ -187,7 +177,7 @@ class BalineseVPParser:
                         'phrase': f"{tokens[i]} {tokens[i + 1]} {tokens[i + 2]}"
                     })
 
-            # Rule 12: Adv + Verb + Noun (Sering makan nasi)
+            # Rule 11: Adv + Verb + Noun (Sering makan nasi)
             if i < len(tokens) - 2:
                 if (self.get_word_type(tokens[i]) == 'Adv' and
                         self.get_word_type(tokens[i + 1]) in ['transitiveVerb', 'intransitiveVerb']):
@@ -204,7 +194,7 @@ class BalineseVPParser:
                                 })
                                 break
 
-            # Rule 13: Verb + Adv (mejalan enggal)
+            # Rule 12: Verb + Adv (mejalan enggal)
             if (self.get_word_type(tokens[i]) in ['intransitiveVerb', 'transitiveVerb'] and
                     self.get_word_type(tokens[i + 1]) == 'Adv'):
                 valid_vps.append({
@@ -212,7 +202,7 @@ class BalineseVPParser:
                     'phrase': f"{tokens[i]} {tokens[i + 1]}"
                 })
 
-            # Rule 14: Verb + Prep + Object (mejalan ke dapur)
+            # Rule 13: Verb + Prep + Object (mejalan ke dapur)
             if i < len(tokens) - 2:
                 if (self.get_word_type(tokens[i]) in ['intransitiveVerb', 'transitiveVerb'] and
                         self.get_word_type(tokens[i + 1]) == 'Prep' and
@@ -222,7 +212,7 @@ class BalineseVPParser:
                         'phrase': f"{tokens[i]} {tokens[i + 1]} {tokens[i + 2]}"
                     })
 
-            # Rule 15: Pronoun + Verb + Adj (ia mejalan enggal)
+            # Rule 14: Pronoun + Verb + Adj (ia mejalan enggal)
             if i < len(tokens) - 2:
                 if (self.get_word_type(tokens[i]) == 'Pronoun' and
                         self.get_word_type(tokens[i + 1]) in ['intransitiveVerb', 'transitiveVerb'] and
@@ -236,6 +226,7 @@ class BalineseVPParser:
 
     def check_sentence_structure(self, tokens):
         structures = []
+        i = 0
         
         if len(tokens) < 2:  # Need at least subject and predicate
             return structures
@@ -272,14 +263,10 @@ class BalineseVPParser:
             return (self.get_word_type(token) == 'Adv' or 
                     self.get_word_type(token) == 'Prep' or
                     token.strip('"') in nounCategories.get('places', []))
-
-        structures = []
-        i = 0
         
         while i < len(tokens):
             matched = False
             
-            # Try longest patterns first
             # SPOPelKet (Subject-Predicate-Object-Complement-Description)
             if i < len(tokens) - 4:
                 if (is_subject(tokens[i]) and 
