@@ -1,5 +1,5 @@
 S P:
-"alit-alite" sesai majalan
+"alit-alite" sesai malajah
 ipun makarya
 
 S P O:
@@ -8,23 +8,25 @@ S P O:
 
 S P Pel:
 "anak lanang" punika dados ketua koperasi
-pancasila punika dasar negarane
-ia magae jemet pesan
-"alit-alite" seleg pisan majalan
+"pancasila" punika pinika dasar negarane
+ia magae jemet pisan
+"alit-alite" seleg pisan malajah
 
 S P Ket:
 ipun kapah nongos di "badung"
 "I bapa" sesai luas ke carik
 
 S P O Pel:
-Ia pepes ngamaang memene pipis liu
-Anake cerik ento nyemakang embokne yeh minum
+Ia pepes ngamaang meme ene pipis liu
+Anake cerik ento nyemakang embok ene yeh minum
 Ia ngelah kambing duang ukud
 
 S P O Ket:
-"I luh dian" pepes meli pupur di toko bali
-memenne sesai ngai bubuh sumsum di paon
+"I luh dian" pepes meli pupur di "toko bali"
 
 S P O Pel Ket:
-Ia ngamaang memene pipis uli gegaene
-Ipun meliang nyamane buku tulis di warung
+Ia ngamaang meme ene pipis uli gega ene
+Ipun meliang nyama ene "buku tulis" di warung
+
+S P O Pel:
+Ia (NP) pepes ngamaang (VP) memene (NP) pipis liu (NP)

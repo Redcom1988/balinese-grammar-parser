@@ -84,7 +84,9 @@ class BalineseParser:
                 ['Noun', 'Pronoun'],  # For possessive constructions like "bapan ipune"
                 ['Noun', 'NP'],  # For compound nouns
                 ['Num', 'NP'],
-                ['NP', 'Prep', 'NP']
+                ['NP', 'Prep', 'NP'],
+                ['Noun', 'Adj', 'Det'],
+                ['NP', 'Adj', 'Det']
             ],
             'VP': [
                 ['Verb'],
@@ -93,12 +95,13 @@ class BalineseParser:
                 ['Verb', 'NP'],
                 ['Verb', 'PP'],
                 ['AP', 'Verb'],
-                ['verb', 'AP'],
+                ['Verb', 'AP'],
+                ['Adv', 'VP']
             ],
             'AP': [
                 ['Adj'],
                 ['Adv', 'Adj'],
-                ['Adj', 'Adv']
+                ['Adj', 'Adv'],
             ],
             'PP': [
                 ['Prep', 'NP'],
@@ -129,11 +132,11 @@ class BalineseParser:
                 'hadiah', 'pupur', 'kambing', 'yeh', 'bubuh', 'sumsum', 'tresna',
                 'dharma', 'karma', 'suka', 'duka', 'dasar', 'negara', 'negarane',
                 'koperasi', 'ketua', 'anak', 'anake', 'lanang', 'luh', 'mahasiswa',
-                'made', 'dangin', 'dian', 'carikne', 'gega', 'gegaene'
+                'made', 'dangin', 'dian', 'carikne', 'gega', 'gegaene', 'ukud'
             ],
             
             'Verb': [
-                'majalan', 'melaib', 'malaib', 'menek', 'tuun', 'teka', 'luas',
+                'malajah', 'melaib', 'malaib', 'menek', 'tuun', 'teka', 'luas',
                 'matulak', 'mlali', 'ngadeg', 'negak', 'melajah', 'megae', 'nulis',
                 'memaca', 'ngajeng', 'minum', 'sirep', 'ngidih', 'meli', 'ngadep',
                 'metakon', 'ngorahang', 'ngae', 'magarapan', 'menahin', 'magae',
@@ -141,7 +144,7 @@ class BalineseParser:
                 'mabanten', 'ngaturang', 'matetulungan', 'masayut', 'ngayah',
                 'malukat', 'mapuja', 'masuryak', 'ngetis', 'maselselin', 'polih',
                 'numbas', 'dados', 'pinaka', 'ngamaang', 'nyemakang', 'ngelah',
-                'mekarya', 'malajah', 'pepes', 'ngai', 'meliang'
+                'mekarya', 'malajah', 'ngai', 'meliang', 'pinika'
             ],
             
             'Adj': [
@@ -163,7 +166,7 @@ class BalineseParser:
             'Pronoun': [
                 'tiang', 'icang', 'titiang', 'gelah', 'manira', 'kami', 'iraga',
                 'cai', 'ragane', 'jerone', 'ida', 'ratu', 'cokor', 'palungguh',
-                'ia', 'ipun', 'dane', 'ida', 'dané', 'niki', 'ento', 'ene',
+                'ia', 'ipun', 'dane', 'ida', 'dané', 'niki', 'ene',
                 'puniki', 'punika', 'ika', 'nike'
             ],
             
@@ -236,42 +239,70 @@ class BalineseParser:
         
         # First pass: combine phrases
         i = 0
-        while i < len(self.word_categories):  # Remove the -1 to allow processing last element
-            # Process Adv + Verb first
-            if (i < len(self.word_categories) - 1 and 
-                self.word_categories[i] == 'Adv' and 
-                self.word_categories[i + 1] == 'Verb'):
-                derivation.append(f"Combined: Adv + Verb → VP")
-                self.word_categories[i:i + 2] = ['VP']
-                continue
+        while i < len(self.word_categories):
+            # Process three-word patterns first
+            if i < len(self.word_categories) - 2:
+                # Handle three-word NP (Noun + Adj + Det)
+                if (self.word_categories[i] == 'Noun' and
+                    self.word_categories[i + 1] == 'Adj' and
+                    self.word_categories[i + 2] == 'Det'):
+                    derivation.append(f"Combined: Noun + Adj + Det → NP (determined)")
+                    self.word_categories[i:i + 3] = ['NP']
+                    self.np_types.append((i, 'determined'))
+                    continue
+                # Handle PP (Prep + Noun + Pronoun)
+                if (self.word_categories[i] == 'Prep' and
+                    self.word_categories[i + 1] == 'Noun' and
+                    self.word_categories[i + 2] == 'Pronoun'):
+                    derivation.append(f"Combined: Prep + Noun + Pronoun → PP")
+                    self.word_categories[i:i + 3] = ['PP']
+                    self.np_types.append((i, 'compound'))
+                    continue
             
-            # Then handle other combinations
-            if i < len(self.word_categories) - 1: 
-                # Noun combinations
-                if self.word_categories[i] == 'Noun':
-                    # Handle compound nouns (Noun + Noun → NP)
-                    if self.word_categories[i + 1] == 'Noun':
-                        derivation.append(f"Combined: Noun + Noun → NP (compound)")
-                        self.word_categories[i:i + 2] = ['NP']
-                        self.np_types.append((i, 'compound'))  # Store position and type
-                        continue
-                    # Handle other noun combinations
-                    if self.word_categories[i + 1] == 'Adj':
-                        derivation.append(f"Combined: Noun + Adj → NP (modified)")
-                        self.word_categories[i:i + 2] = ['NP']
-                        self.np_types.append((i, 'modified'))  # Store position and type
-                        continue
-                    if self.word_categories[i + 1] == 'Pronoun':
-                        derivation.append(f"Combined: Noun + Pronoun → NP (determined)")
-                        self.word_categories[i:i + 2] = ['NP']
-                        self.np_types.append((i, 'determined'))  # Store position and type
-                        continue
+            # Then process two-word patterns
+            if i < len(self.word_categories) - 1:
+                # Process Adv + Verb
+                if (self.word_categories[i] == 'Adv' and 
+                    self.word_categories[i + 1] == 'Verb'):
+                    derivation.append(f"Combined: Adv + Verb → VP")
+                    self.word_categories[i:i + 2] = ['VP']
+                    continue
                 
                 # Adjective combinations
                 if self.word_categories[i] == 'Adj':
                     if self.word_categories[i + 1] == 'Adv':
                         derivation.append(f"Combined: Adj + Adv → AP")
                         self.word_categories[i:i + 2] = ['AP']
+                        continue
+                
+                # Noun combinations
+                if self.word_categories[i] == 'Noun':
+                    if (i + 2 >= len(self.word_categories) or self.word_categories[i + 2] != 'Noun') and self.word_categories[i + 1] == 'Verb':
+                        derivation.append(f"Combined: Noun + Verb → NP (compound)")
+                        self.word_categories[i:i + 2] = ['NP']
+                        self.np_types.append((i, 'compound'))
+                        continue
+                    elif self.word_categories[i + 1] == 'Noun':
+                        derivation.append(f"Combined: Noun + Noun → NP (compound)")
+                        self.word_categories[i:i + 2] = ['NP']
+                        self.np_types.append((i, 'compound'))
+                        continue
+                    elif (i + 2 >= len(self.word_categories) or self.word_categories[i + 2] != 'Adv') and self.word_categories[i + 1] == 'Adj':
+                        derivation.append(f"Combined: Noun + Adj → NP (modified)")
+                        self.word_categories[i:i + 2] = ['NP']
+                        self.np_types.append((i, 'modified'))
+                        continue
+                    elif self.word_categories[i + 1] == 'Pronoun':
+                        derivation.append(f"Combined: Noun + Pronoun → NP (determined)")
+                        self.word_categories[i:i + 2] = ['NP']
+                        self.np_types.append((i, 'determined'))
+                        continue
+                
+                # Number combinations
+                if self.word_categories[i] == 'Num':
+                    if self.word_categories[i + 1] == 'Noun':  # Changed from 'Unit' to handle classifiers
+                        derivation.append(f"Combined: Num + Noun → NumP")
+                        self.word_categories[i:i + 2] = ['NumP']
                         continue
                 
                 # Preposition combinations
@@ -281,17 +312,14 @@ class BalineseParser:
                         self.word_categories[i:i + 2] = ['PP']
                         continue
                 
-                # Number combinations
-                if self.word_categories[i] == 'Num':
-                    if self.word_categories[i + 1] in ['Unit', 'Noun']:
-                        derivation.append(f"Combined: Num + Unit → NumP")
-                        self.word_categories[i:i + 2] = ['NumP']
-                        continue
-            
-            # Handle single Verb → VP (only if not already part of a combination)
+            # Convert single categories to phrases where appropriate
             if self.word_categories[i] == 'Verb':
                 derivation.append(f"Combined: Verb → VP")
                 self.word_categories[i:i + 1] = ['VP']
+            elif self.word_categories[i] == 'Noun':
+                derivation.append(f"Combined: Noun → NP")
+                self.word_categories[i:i + 1] = ['NP']
+                self.np_types.append((i, 'basic'))  # Maintain tuple structure
                 
             i += 1
 
@@ -384,7 +412,7 @@ class BalineseParser:
                 
         # Predicate derivations
         if target_category == 'P':
-            if current_category in ['Verb', 'VP']:
+            if current_category in ['Verb', 'VP', 'AP']:
                 derivation.append(f"Derivation: {current_category} → P")
                 return True
                     
@@ -394,13 +422,38 @@ class BalineseParser:
                 if current_np_type in ['determined', 'modified']:
                     derivation.append(f"Derivation: {current_np_type} NP → O")
                     return True
+                elif current_np_type == 'basic':
+                    derivation.append(f"Derivation: basic NP → O")
+                    return True
 
         # Pelengkap derivations        
         if target_category == 'Pel':
             if current_category == 'NP':
+                # Check if it's a `compound` type NP
                 if current_np_type == 'compound':
                     derivation.append(f"Derivation: compound NP → Pel")
                     return True
+                # Explicitly resolve the ambiguity for `modified` NP
+                elif current_np_type == 'basic':
+                    derivation.append(f"Derivation: basic NP → Pel")
+                    return True
+                elif current_np_type == 'modified':
+                    if self.resolve_modified_np_conflict(position):
+                        derivation.append(f"Derivation: modified NP → Pel")
+                        return True
+                    else:
+                        derivation.append(f"Derivation conflict: modified NP not resolved as Pel")
+                        return False
+            elif current_category == 'NumP':
+                derivation.append(f"Derivation: NumP → Pel")
+                return True
+            elif current_category == 'VP':
+                derivation.append(f"Derivation: VP → Pel")
+                return True
+            elif current_category == 'AP':
+                derivation.append(f"Derivation: AP → Pel")
+                return True
+
                 
         # Keterangan (adverb) derivations
         if target_category == 'Ket':
@@ -409,6 +462,22 @@ class BalineseParser:
                 return True
                 
         return False
+    
+    def resolve_modified_np_conflict(self, position):
+        """
+        Resolve ambiguity for modified NP. 
+        Returns True if it should derive to Pel, False otherwise.
+        """
+        # Example heuristic: Check surrounding word categories or other criteria
+        if position > 0 and self.word_categories[position - 1] in ['Verb', 'VP']:
+            # If preceded by a Verb/VP, likely to be Pelengkap
+            return False
+        if position < len(self.word_categories) - 1 and self.word_categories[position + 1] in ['Prep', 'PP']:
+            # If followed by Prep/PP, likely not Pelengkap
+            return True
+        # Default decision
+        return True
+
 
 def main():
     root = tk.Tk()
