@@ -1,0 +1,206 @@
+2025-01-16 02:05:14,375 - BalineseParser - INFO - Starting parser tests
+2025-01-16 02:05:14,375 - BalineseParser - INFO - Initializing Balinese Parser
+2025-01-16 02:05:14,375 - BalineseParser - DEBUG - Initialized grammar with 11 rules and 7 terminal categories
+2025-01-16 02:05:14,375 - BalineseParser - INFO - 
+Testing sentence: S (tiang) P (mekarya) Pel (guru) O (matematika)
+2025-01-16 02:05:14,376 - BalineseParser - INFO - Starting to parse sentence: S (tiang) P (mekarya) Pel (guru) O (matematika)
+2025-01-16 02:05:14,376 - BalineseParser - INFO - Extracting components from sentence: S (tiang) P (mekarya) Pel (guru) O (matematika)
+2025-01-16 02:05:14,376 - BalineseParser - DEBUG - Extracted component S: 'tiang'
+2025-01-16 02:05:14,378 - BalineseParser - DEBUG - Extracted component P: 'mekarya'
+2025-01-16 02:05:14,378 - BalineseParser - DEBUG - Extracted component Pel: 'guru'
+2025-01-16 02:05:14,378 - BalineseParser - DEBUG - Extracted component O: 'matematika'
+2025-01-16 02:05:14,378 - BalineseParser - DEBUG - Found 4 components: ['S', 'P', 'Pel', 'O']
+2025-01-16 02:05:14,378 - BalineseParser - DEBUG - Parsing component S: 'tiang'
+2025-01-16 02:05:14,378 - BalineseParser - INFO - Starting CYK parsing for input: tiang
+2025-01-16 02:05:14,378 - BalineseParser - DEBUG - Initializing base level of CYK table
+2025-01-16 02:05:14,378 - BalineseParser - DEBUG - Processing word at position 0: 'tiang'
+2025-01-16 02:05:14,378 - BalineseParser - DEBUG - Word 'tiang' matches categories: ['Pronoun']
+2025-01-16 02:05:14,378 - BalineseParser - DEBUG - Added derived category NP for word 'tiang'
+2025-01-16 02:05:14,378 - BalineseParser - DEBUG - Component S validity: True
+2025-01-16 02:05:14,378 - BalineseParser - DEBUG - Parse details for S: {'NP', 'Pronoun'}
+2025-01-16 02:05:14,378 - BalineseParser - DEBUG - Parsing component P: 'mekarya'
+2025-01-16 02:05:14,378 - BalineseParser - INFO - Starting CYK parsing for input: mekarya
+2025-01-16 02:05:14,379 - BalineseParser - DEBUG - Initializing base level of CYK table
+2025-01-16 02:05:14,379 - BalineseParser - DEBUG - Processing word at position 0: 'mekarya'
+2025-01-16 02:05:14,379 - BalineseParser - DEBUG - Word 'mekarya' matches categories: ['Verb']
+2025-01-16 02:05:14,379 - BalineseParser - DEBUG - Added derived category VP for word 'mekarya'
+2025-01-16 02:05:14,379 - BalineseParser - DEBUG - Component P validity: True
+2025-01-16 02:05:14,379 - BalineseParser - DEBUG - Parse details for P: {'Verb', 'VP'}
+2025-01-16 02:05:14,379 - BalineseParser - DEBUG - Parsing component Pel: 'guru'
+2025-01-16 02:05:14,379 - BalineseParser - INFO - Starting CYK parsing for input: guru
+2025-01-16 02:05:14,379 - BalineseParser - DEBUG - Initializing base level of CYK table
+2025-01-16 02:05:14,379 - BalineseParser - DEBUG - Processing word at position 0: 'guru'
+2025-01-16 02:05:14,379 - BalineseParser - DEBUG - Word 'guru' matches categories: ['Noun']
+2025-01-16 02:05:14,379 - BalineseParser - DEBUG - Added derived category NP for word 'guru'
+2025-01-16 02:05:14,379 - BalineseParser - DEBUG - Component Pel validity: True
+2025-01-16 02:05:14,379 - BalineseParser - DEBUG - Parse details for Pel: {'NP', 'Noun'}
+2025-01-16 02:05:14,379 - BalineseParser - DEBUG - Parsing component O: 'matematika'
+2025-01-16 02:05:14,379 - BalineseParser - INFO - Starting CYK parsing for input: matematika
+2025-01-16 02:05:14,380 - BalineseParser - DEBUG - Initializing base level of CYK table
+2025-01-16 02:05:14,380 - BalineseParser - DEBUG - Processing word at position 0: 'matematika'
+2025-01-16 02:05:14,380 - BalineseParser - DEBUG - Word 'matematika' matches categories: ['Noun']
+2025-01-16 02:05:14,380 - BalineseParser - DEBUG - Added derived category NP for word 'matematika'
+2025-01-16 02:05:14,380 - BalineseParser - DEBUG - Component O validity: True
+2025-01-16 02:05:14,380 - BalineseParser - DEBUG - Parse details for O: {'NP', 'Noun'}
+2025-01-16 02:05:14,380 - BalineseParser - INFO - Overall sentence structure validity: True
+2025-01-16 02:05:14,380 - BalineseParser - DEBUG - Component sequence: ('S', 'P', 'Pel', 'O')
+2025-01-16 02:05:14,380 - BalineseParser - INFO - Component validity:
+2025-01-16 02:05:14,380 - BalineseParser - INFO - S: Valid
+2025-01-16 02:05:14,380 - BalineseParser - INFO - P: Valid
+2025-01-16 02:05:14,381 - BalineseParser - INFO - Pel: Valid
+2025-01-16 02:05:14,381 - BalineseParser - INFO - O: Valid
+2025-01-16 02:05:14,381 - BalineseParser - INFO - K: Valid
+2025-01-16 02:05:14,381 - BalineseParser - DEBUG - Parsing details:
+2025-01-16 02:05:14,381 - BalineseParser - DEBUG - S contains: {'NP', 'Pronoun'}
+2025-01-16 02:05:14,381 - BalineseParser - DEBUG - P contains: {'Verb', 'VP'}
+2025-01-16 02:05:14,381 - BalineseParser - DEBUG - Pel contains: {'NP', 'Noun'}
+2025-01-16 02:05:14,381 - BalineseParser - DEBUG - O contains: {'NP', 'Noun'}
+2025-01-16 02:05:14,382 - BalineseParser - INFO - 
+Testing sentence: S (bapak) P (lunga) Ket (ring sekolah)
+2025-01-16 02:05:14,382 - BalineseParser - INFO - Starting to parse sentence: S (bapak) P (lunga) Ket (ring sekolah)
+2025-01-16 02:05:14,382 - BalineseParser - INFO - Extracting components from sentence: S (bapak) P (lunga) Ket (ring sekolah)
+2025-01-16 02:05:14,382 - BalineseParser - DEBUG - Extracted component S: 'bapak'
+2025-01-16 02:05:14,382 - BalineseParser - DEBUG - Extracted component P: 'lunga'
+2025-01-16 02:05:14,382 - BalineseParser - DEBUG - Extracted component Ket: 'ring sekolah'
+2025-01-16 02:05:14,382 - BalineseParser - DEBUG - Found 3 components: ['S', 'P', 'Ket']
+2025-01-16 02:05:14,382 - BalineseParser - DEBUG - Parsing component S: 'bapak'
+2025-01-16 02:05:14,382 - BalineseParser - INFO - Starting CYK parsing for input: bapak
+2025-01-16 02:05:14,383 - BalineseParser - DEBUG - Initializing base level of CYK table
+2025-01-16 02:05:14,383 - BalineseParser - DEBUG - Processing word at position 0: 'bapak'
+2025-01-16 02:05:14,383 - BalineseParser - DEBUG - Word 'bapak' matches categories: ['Noun']
+2025-01-16 02:05:14,383 - BalineseParser - DEBUG - Added derived category NP for word 'bapak'
+2025-01-16 02:05:14,383 - BalineseParser - DEBUG - Component S validity: True
+2025-01-16 02:05:14,383 - BalineseParser - DEBUG - Parse details for S: {'NP', 'Noun'}
+2025-01-16 02:05:14,383 - BalineseParser - DEBUG - Parsing component P: 'lunga'
+2025-01-16 02:05:14,383 - BalineseParser - INFO - Starting CYK parsing for input: lunga
+2025-01-16 02:05:14,383 - BalineseParser - DEBUG - Initializing base level of CYK table
+2025-01-16 02:05:14,383 - BalineseParser - DEBUG - Processing word at position 0: 'lunga'
+2025-01-16 02:05:14,383 - BalineseParser - DEBUG - Word 'lunga' matches categories: ['Verb']
+2025-01-16 02:05:14,383 - BalineseParser - DEBUG - Added derived category VP for word 'lunga'
+2025-01-16 02:05:14,383 - BalineseParser - DEBUG - Component P validity: True
+2025-01-16 02:05:14,383 - BalineseParser - DEBUG - Parse details for P: {'Verb', 'VP'}
+2025-01-16 02:05:14,383 - BalineseParser - DEBUG - Parsing component Ket: 'ring sekolah'
+2025-01-16 02:05:14,383 - BalineseParser - INFO - Starting CYK parsing for input: ring sekolah
+2025-01-16 02:05:14,384 - BalineseParser - DEBUG - Initializing base level of CYK table
+2025-01-16 02:05:14,384 - BalineseParser - DEBUG - Processing word at position 0: 'ring'
+2025-01-16 02:05:14,384 - BalineseParser - DEBUG - Word 'ring' matches categories: ['Prep']
+2025-01-16 02:05:14,384 - BalineseParser - DEBUG - Processing word at position 1: 'sekolah'
+2025-01-16 02:05:14,384 - BalineseParser - DEBUG - Word 'sekolah' matches categories: ['Noun']
+2025-01-16 02:05:14,384 - BalineseParser - DEBUG - Added derived category NP for word 'sekolah'
+2025-01-16 02:05:14,384 - BalineseParser - DEBUG - Processing span (0, 1)
+2025-01-16 02:05:14,384 - BalineseParser - DEBUG - Found valid combination: Prep + NP -> PP for span (0, 1)
+2025-01-16 02:05:14,384 - BalineseParser - DEBUG - Component Ket validity: False
+2025-01-16 02:05:14,384 - BalineseParser - DEBUG - Parse details for Ket: {'PP'}
+2025-01-16 02:05:14,384 - BalineseParser - INFO - Overall sentence structure validity: True
+2025-01-16 02:05:14,384 - BalineseParser - DEBUG - Component sequence: ('S', 'P', 'Ket')
+2025-01-16 02:05:14,384 - BalineseParser - INFO - Component validity:
+2025-01-16 02:05:14,384 - BalineseParser - INFO - S: Valid
+2025-01-16 02:05:14,385 - BalineseParser - INFO - P: Valid
+2025-01-16 02:05:14,385 - BalineseParser - INFO - Ket: Invalid
+2025-01-16 02:05:14,385 - BalineseParser - INFO - K: Valid
+2025-01-16 02:05:14,385 - BalineseParser - DEBUG - Parsing details:
+2025-01-16 02:05:14,385 - BalineseParser - DEBUG - S contains: {'NP', 'Noun'}
+2025-01-16 02:05:14,385 - BalineseParser - DEBUG - P contains: {'Verb', 'VP'}
+2025-01-16 02:05:14,385 - BalineseParser - DEBUG - Ket contains: {'PP'}
+2025-01-16 02:05:14,385 - BalineseParser - INFO - 
+Testing sentence: S (nina) P (malajah) O (matematika) Ket (ring kelas)
+2025-01-16 02:05:14,385 - BalineseParser - INFO - Starting to parse sentence: S (nina) P (malajah) O (matematika) Ket (ring kelas)
+2025-01-16 02:05:14,386 - BalineseParser - INFO - Extracting components from sentence: S (nina) P (malajah) O (matematika) Ket (ring kelas)
+2025-01-16 02:05:14,386 - BalineseParser - DEBUG - Extracted component S: 'nina'
+2025-01-16 02:05:14,386 - BalineseParser - DEBUG - Extracted component P: 'malajah'
+2025-01-16 02:05:14,386 - BalineseParser - DEBUG - Extracted component O: 'matematika'
+2025-01-16 02:05:14,386 - BalineseParser - DEBUG - Extracted component Ket: 'ring kelas'
+2025-01-16 02:05:14,386 - BalineseParser - DEBUG - Found 4 components: ['S', 'P', 'O', 'Ket']
+2025-01-16 02:05:14,386 - BalineseParser - DEBUG - Parsing component S: 'nina'
+2025-01-16 02:05:14,386 - BalineseParser - INFO - Starting CYK parsing for input: nina
+2025-01-16 02:05:14,386 - BalineseParser - DEBUG - Initializing base level of CYK table
+2025-01-16 02:05:14,387 - BalineseParser - DEBUG - Processing word at position 0: 'nina'
+2025-01-16 02:05:14,387 - BalineseParser - DEBUG - Word 'nina' matches categories: ['PropNoun']
+2025-01-16 02:05:14,387 - BalineseParser - DEBUG - Added derived category NP for word 'nina'
+2025-01-16 02:05:14,387 - BalineseParser - DEBUG - Component S validity: True
+2025-01-16 02:05:14,387 - BalineseParser - DEBUG - Parse details for S: {'NP', 'PropNoun'}
+2025-01-16 02:05:14,387 - BalineseParser - DEBUG - Parsing component P: 'malajah'
+2025-01-16 02:05:14,387 - BalineseParser - INFO - Starting CYK parsing for input: malajah
+2025-01-16 02:05:14,387 - BalineseParser - DEBUG - Initializing base level of CYK table
+2025-01-16 02:05:14,387 - BalineseParser - DEBUG - Processing word at position 0: 'malajah'
+2025-01-16 02:05:14,387 - BalineseParser - DEBUG - Word 'malajah' matches categories: ['Verb']
+2025-01-16 02:05:14,387 - BalineseParser - DEBUG - Added derived category VP for word 'malajah'
+2025-01-16 02:05:14,387 - BalineseParser - DEBUG - Component P validity: True
+2025-01-16 02:05:14,387 - BalineseParser - DEBUG - Parse details for P: {'Verb', 'VP'}
+2025-01-16 02:05:14,387 - BalineseParser - DEBUG - Parsing component O: 'matematika'
+2025-01-16 02:05:14,387 - BalineseParser - INFO - Starting CYK parsing for input: matematika
+2025-01-16 02:05:14,387 - BalineseParser - DEBUG - Initializing base level of CYK table
+2025-01-16 02:05:14,388 - BalineseParser - DEBUG - Processing word at position 0: 'matematika'
+2025-01-16 02:05:14,388 - BalineseParser - DEBUG - Word 'matematika' matches categories: ['Noun']
+2025-01-16 02:05:14,388 - BalineseParser - DEBUG - Added derived category NP for word 'matematika'
+2025-01-16 02:05:14,388 - BalineseParser - DEBUG - Component O validity: True
+2025-01-16 02:05:14,388 - BalineseParser - DEBUG - Parse details for O: {'NP', 'Noun'}
+2025-01-16 02:05:14,388 - BalineseParser - DEBUG - Parsing component Ket: 'ring kelas'
+2025-01-16 02:05:14,388 - BalineseParser - INFO - Starting CYK parsing for input: ring kelas
+2025-01-16 02:05:14,388 - BalineseParser - DEBUG - Initializing base level of CYK table
+2025-01-16 02:05:14,388 - BalineseParser - DEBUG - Processing word at position 0: 'ring'
+2025-01-16 02:05:14,388 - BalineseParser - DEBUG - Word 'ring' matches categories: ['Prep']
+2025-01-16 02:05:14,388 - BalineseParser - DEBUG - Processing word at position 1: 'kelas'
+2025-01-16 02:05:14,388 - BalineseParser - DEBUG - Word 'kelas' matches categories: ['Verb']
+2025-01-16 02:05:14,388 - BalineseParser - DEBUG - Added derived category VP for word 'kelas'
+2025-01-16 02:05:14,388 - BalineseParser - DEBUG - Processing span (0, 1)
+2025-01-16 02:05:14,388 - BalineseParser - DEBUG - Found valid combination: Prep + VP -> VP for span (0, 1)
+2025-01-16 02:05:14,388 - BalineseParser - DEBUG - Component Ket validity: True
+2025-01-16 02:05:14,388 - BalineseParser - DEBUG - Parse details for Ket: {'VP'}
+2025-01-16 02:05:14,388 - BalineseParser - INFO - Overall sentence structure validity: True
+2025-01-16 02:05:14,389 - BalineseParser - DEBUG - Component sequence: ('S', 'P', 'O', 'Ket')
+2025-01-16 02:05:14,389 - BalineseParser - INFO - Component validity:
+2025-01-16 02:05:14,389 - BalineseParser - INFO - S: Valid
+2025-01-16 02:05:14,389 - BalineseParser - INFO - P: Valid
+2025-01-16 02:05:14,389 - BalineseParser - INFO - O: Valid
+2025-01-16 02:05:14,390 - BalineseParser - INFO - Ket: Valid
+2025-01-16 02:05:14,390 - BalineseParser - INFO - K: Valid
+2025-01-16 02:05:14,390 - BalineseParser - DEBUG - Parsing details:
+2025-01-16 02:05:14,390 - BalineseParser - DEBUG - S contains: {'NP', 'PropNoun'}
+2025-01-16 02:05:14,390 - BalineseParser - DEBUG - P contains: {'Verb', 'VP'}
+2025-01-16 02:05:14,390 - BalineseParser - DEBUG - O contains: {'NP', 'Noun'}
+2025-01-16 02:05:14,390 - BalineseParser - DEBUG - Ket contains: {'VP'}
+2025-01-16 02:05:14,390 - BalineseParser - INFO - 
+Testing sentence: S (ipun) P (numbas) O (nasi)
+2025-01-16 02:05:14,390 - BalineseParser - INFO - Starting to parse sentence: S (ipun) P (numbas) O (nasi)
+2025-01-16 02:05:14,391 - BalineseParser - INFO - Extracting components from sentence: S (ipun) P (numbas) O (nasi)
+2025-01-16 02:05:14,391 - BalineseParser - DEBUG - Extracted component S: 'ipun'
+2025-01-16 02:05:14,391 - BalineseParser - DEBUG - Extracted component P: 'numbas'
+2025-01-16 02:05:14,391 - BalineseParser - DEBUG - Extracted component O: 'nasi'
+2025-01-16 02:05:14,391 - BalineseParser - DEBUG - Found 3 components: ['S', 'P', 'O']
+2025-01-16 02:05:14,391 - BalineseParser - DEBUG - Parsing component S: 'ipun'
+2025-01-16 02:05:14,391 - BalineseParser - INFO - Starting CYK parsing for input: ipun
+2025-01-16 02:05:14,391 - BalineseParser - DEBUG - Initializing base level of CYK table
+2025-01-16 02:05:14,392 - BalineseParser - DEBUG - Processing word at position 0: 'ipun'
+2025-01-16 02:05:14,392 - BalineseParser - DEBUG - Word 'ipun' matches categories: ['Pronoun']
+2025-01-16 02:05:14,392 - BalineseParser - DEBUG - Added derived category NP for word 'ipun'
+2025-01-16 02:05:14,392 - BalineseParser - DEBUG - Component S validity: True
+2025-01-16 02:05:14,392 - BalineseParser - DEBUG - Parse details for S: {'NP', 'Pronoun'}
+2025-01-16 02:05:14,392 - BalineseParser - DEBUG - Parsing component P: 'numbas'
+2025-01-16 02:05:14,392 - BalineseParser - INFO - Starting CYK parsing for input: numbas
+2025-01-16 02:05:14,392 - BalineseParser - DEBUG - Initializing base level of CYK table
+2025-01-16 02:05:14,392 - BalineseParser - DEBUG - Processing word at position 0: 'numbas'
+2025-01-16 02:05:14,392 - BalineseParser - DEBUG - Word 'numbas' matches categories: ['Verb']
+2025-01-16 02:05:14,392 - BalineseParser - DEBUG - Added derived category VP for word 'numbas'
+2025-01-16 02:05:14,392 - BalineseParser - DEBUG - Component P validity: True
+2025-01-16 02:05:14,392 - BalineseParser - DEBUG - Parse details for P: {'Verb', 'VP'}
+2025-01-16 02:05:14,392 - BalineseParser - DEBUG - Parsing component O: 'nasi'
+2025-01-16 02:05:14,392 - BalineseParser - INFO - Starting CYK parsing for input: nasi
+2025-01-16 02:05:14,393 - BalineseParser - DEBUG - Initializing base level of CYK table
+2025-01-16 02:05:14,393 - BalineseParser - DEBUG - Processing word at position 0: 'nasi'
+2025-01-16 02:05:14,393 - BalineseParser - DEBUG - Word 'nasi' matches categories: ['Noun']
+2025-01-16 02:05:14,393 - BalineseParser - DEBUG - Added derived category NP for word 'nasi'
+2025-01-16 02:05:14,393 - BalineseParser - DEBUG - Component O validity: True
+2025-01-16 02:05:14,393 - BalineseParser - DEBUG - Parse details for O: {'NP', 'Noun'}
+2025-01-16 02:05:14,393 - BalineseParser - INFO - Overall sentence structure validity: True
+2025-01-16 02:05:14,393 - BalineseParser - DEBUG - Component sequence: ('S', 'P', 'O')
+2025-01-16 02:05:14,393 - BalineseParser - INFO - Component validity:
+2025-01-16 02:05:14,393 - BalineseParser - INFO - S: Valid
+2025-01-16 02:05:14,394 - BalineseParser - INFO - P: Valid
+2025-01-16 02:05:14,394 - BalineseParser - INFO - O: Valid
+2025-01-16 02:05:14,394 - BalineseParser - INFO - K: Valid
+2025-01-16 02:05:14,394 - BalineseParser - DEBUG - Parsing details:
+2025-01-16 02:05:14,394 - BalineseParser - DEBUG - S contains: {'NP', 'Pronoun'}
+2025-01-16 02:05:14,394 - BalineseParser - DEBUG - P contains: {'Verb', 'VP'}
+2025-01-16 02:05:14,394 - BalineseParser - DEBUG - O contains: {'NP', 'Noun'}
+2025-01-16 02:05:14,394 - BalineseParser - INFO - Completed all parser tests

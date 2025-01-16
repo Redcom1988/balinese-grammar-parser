@@ -1,3 +1,27 @@
+# Valid Sentences:
+# titiang sampun meblanja                                               : Worked
+# "i putu dangin" punika sesai melajah megambal                         : Worked
+# adik tiange kapah melali ka umah timpalne                             : 
+# sepedane wayan darta sesai anggone ngatehin bapane ka carik           :
+# ketua pasar punika sampun rauh saking tuni semeng                     :
+# bapakne "i putu gede" punika pinaka guru olahraga di sekolah tiange   :
+# adin tiange sampun dados mahasiswa baru ring kampus udayana jimbaran  :
+# ragane sampun mekarya saking semeng pisan                             :
+# dane setata manting baju akeh pisan ka tukad unda                     :
+# bapan ipune sampun dados balian sakti saking sue pisan                :
+
+# Invalid Sentences:
+# ibu guru tiange galak pisan ngajahin matematika                       :
+# anake "luh jegeg" punika dueg pisan mekarya wewantenan                :
+# pianakne pak guru ento seleg pisan melajah komputer di sekolah        :
+# bapakne "i putu gede" guru olahraga di sekolah tiange                 :
+# ibu puspa punika dosen matematika sane jegeg ring kampus timpal tiange:
+# nasi goreng punika ajengan lakar abane ka kota surabaya               :
+# sepeda baru adin tiange telung pasang lakar abane ka kota surabaya    :
+# sepeda motorne dadue luung pati                                       :
+# bapan tiange ka carik nanem padi uli tuning semengan                  :
+# memene "ketut bagus" ka yogyakarta ngatehin adine                     :
+
 import tkinter as tk
 from tkinter import ttk, scrolledtext
 
@@ -69,9 +93,9 @@ class BalineseParser:
                 ['S', 'P']
             ],
             'S': [['NP']],
-            'P': [['VP'], ['NP'], ['AP'], ['NumP'], ['PP']],
+            'P': [['VP'], ['NP'], ['AdjP'], ['NumP'], ['PP']],
             'O': [['NP']],
-            'Pel': [['NP'], ['AP'], ['NumP'], ['VP']],
+            'Pel': [['NP'], ['AdjP'], ['NumP'], ['VP']],
             'Ket': [['PP']],
             
             # Phrase structure rules using only allowed POS
@@ -94,11 +118,11 @@ class BalineseParser:
                 ['Verb', 'Adv'],
                 ['Verb', 'NP'],
                 ['Verb', 'PP'],
-                ['AP', 'Verb'],
-                ['Verb', 'AP'],
+                ['AdjP', 'Verb'],
+                ['Verb', 'AdjP'],
                 ['Adv', 'VP']
             ],
-            'AP': [
+            'AdjP': [
                 ['Adj'],
                 ['Adv', 'Adj'],
                 ['Adj', 'Adv'],
@@ -132,7 +156,8 @@ class BalineseParser:
                 'hadiah', 'pupur', 'kambing', 'yeh', 'bubuh', 'sumsum', 'tresna',
                 'dharma', 'karma', 'suka', 'duka', 'dasar', 'negara', 'negarane',
                 'koperasi', 'ketua', 'anak', 'anake', 'lanang', 'luh', 'mahasiswa',
-                'made', 'dangin', 'dian', 'carikne', 'gega', 'gegaene', 'ukud'
+                'made', 'dangin', 'dian', 'carikne', 'gega', 'gegaene', 'ukud', 'adik',
+                'timpalne', 'ibu', 'matematika'
             ],
             
             'Verb': [
@@ -144,7 +169,8 @@ class BalineseParser:
                 'mabanten', 'ngaturang', 'matetulungan', 'masayut', 'ngayah',
                 'malukat', 'mapuja', 'masuryak', 'ngetis', 'maselselin', 'polih',
                 'numbas', 'dados', 'pinaka', 'ngamaang', 'nyemakang', 'ngelah',
-                'mekarya', 'malajah', 'ngai', 'meliang', 'pinika'
+                'mekarya', 'malajah', 'ngai', 'meliang', 'pinika', 'meblanja', 'megambal',
+                'melali', 'ngajahin'
             ],
             
             'Adj': [
@@ -153,21 +179,21 @@ class BalineseParser:
                 'jegeg', 'bagus', 'melah', 'jelek', 'dueg', 'belog', 'becik',
                 'rajin', 'males', 'seleg', 'kendel', 'takut', 'gedeg', 'demen',
                 'panes', 'dingin', 'basang', 'tuh', 'belus', 'tua', 'bajang',
-                'wayah', 'anyar', 'let', 'maal', 'cerik', 'liu', 'jemet'
+                'wayah', 'anyar', 'let', 'maal', 'cerik', 'liu', 'jemet', 'galak'
             ],
             
             'Adv': [
                 'sesai', 'pepes', 'kapah', 'tusing', 'paling', 'jani', 'mani',
                 'ibi', 'puan', 'telun', 'semengan', 'tengai', 'sanja', 'peteng',
                 'nyanan', 'suud', 'suba', 'aluh', 'adeng', 'becat', 'jemet',
-                'melah', 'pisan', 'sanget', 'bas', 'banget', 'bes', 'jagi'
+                'melah', 'pisan', 'sanget', 'bas', 'banget', 'bes', 'jagi', 'sampun'
             ],
             
             'Pronoun': [
                 'tiang', 'icang', 'titiang', 'gelah', 'manira', 'kami', 'iraga',
                 'cai', 'ragane', 'jerone', 'ida', 'ratu', 'cokor', 'palungguh',
                 'ia', 'ipun', 'dane', 'ida', 'dané', 'niki', 'ene',
-                'puniki', 'punika', 'ika', 'nike'
+                'puniki', 'punika', 'ika', 'nike', 'tiange'
             ],
             
             'Num': [
@@ -271,8 +297,8 @@ class BalineseParser:
                 # Adjective combinations
                 if self.word_categories[i] == 'Adj':
                     if self.word_categories[i + 1] == 'Adv':
-                        derivation.append(f"Combined: Adj + Adv → AP")
-                        self.word_categories[i:i + 2] = ['AP']
+                        derivation.append(f"Combined: Adj + Adv → AdjP")
+                        self.word_categories[i:i + 2] = ['AdjP']
                         continue
                 
                 # Noun combinations
@@ -412,7 +438,7 @@ class BalineseParser:
                 
         # Predicate derivations
         if target_category == 'P':
-            if current_category in ['Verb', 'VP', 'AP']:
+            if current_category in ['Verb', 'VP', 'AdjP']:
                 derivation.append(f"Derivation: {current_category} → P")
                 return True
                     
@@ -450,14 +476,14 @@ class BalineseParser:
             elif current_category == 'VP':
                 derivation.append(f"Derivation: VP → Pel")
                 return True
-            elif current_category == 'AP':
-                derivation.append(f"Derivation: AP → Pel")
+            elif current_category == 'AdjP':
+                derivation.append(f"Derivation: AdjP → Pel")
                 return True
 
                 
         # Keterangan (adverb) derivations
         if target_category == 'Ket':
-            if current_category in ['PP', 'AP']:
+            if current_category in ['PP', 'AdjP']:
                 derivation.append(f"Derivation: {current_category} → Ket")
                 return True
                 
