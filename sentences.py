@@ -1,29 +1,29 @@
 # Valid Sentences:
 test_valid_sentences = [
-    "titiang sampun meblanja",
-    "i putu dangin punika sesai melajah megambal",
-    "adik tiange kapah melali ka umah timpalne",
-    "sepedane wayan darta sesai anggone ngatehin bapane ka carik",
-    "ketua pasar punika sampun rauh saking tuni semeng",
-    "bapakne i putu gede punika pinaka guru olahraga di sekolah tiange",
-    "adin tiange sampun dados mahasiswa baru ring kampus udayana jimbaran",
-    "ragane sampun mekarya saking semeng pisan",
-    "dane setata manting baju akeh pisan ka tukad unda",
-    "bapan ipune sampun dados balian sakti saking sue pisan"
+    "Titiang sampun meblanja",
+    "I putu dangin punika sesai melajah megambal",
+    "Adik tiange kapah melali ka umah timpalne",
+    "Sepedane wayan darta sesai anggone ngatehin bapane ka carik",
+    "Ketua pasar punika sampun rauh saking tuni semeng",
+    "Bapakne i putu gede punika pinaka guru olahraga di sekolah tiange",
+    "Adin tiange sampun dados mahasiswa baru ring kampus udayana jimbaran",
+    "Ragane sampun mekarya saking semeng pisan",
+    "Dane setata manting baju akeh pisan ka tukad unda",
+    "Bapan ipune sampun dados balian sakti saking sue pisan"
 ]
 
 # Invalid Sentences:
 test_invalid_sentences = [
-    "ibu guru tiange galak pisan ngajahin matematika",
-    "anake luh jegeg punika dueg pisan mekarya wewantenan",
-    "pianakne pak guru ento seleg pisan melajah komputer di sekolah",
-    "bapakne i putu gede guru olahraga di sekolah tiange",
-    "ibu puspa punika dosen matematika sane jegeg ring kampus timpal tiange",
-    "nasi goreng punika ajengan sane paling demenin tiang",
-    "sepeda baru adin tiange telung pasang lakar abane ka kota surabaya",
-    "sepeda motorne dadue luung pati",
-    "bapan tiange ka carik nanem padi uli tuning semengan",
-    "memene ketut bagus ka yogyakarta ngatehin adine"
+    "Ibu guru tiange galak pisan ngajahin matematika",
+    "Anake luh jegeg punika dueg pisan mekarya wewantenan",
+    "Pianakne pak guru ento seleg pisan melajah komputer di sekolah",
+    "Bapakne i putu gede guru olahraga di sekolah tiange",
+    "Ibu puspa punika dosen matematika sane jegeg ring kampus timpal tiange",
+    "Nasi goreng punika ajengan sane paling demenin tiang",
+    "Sepeda baru adin tiange telung pasang lakar abane ka kota surabaya",
+    "Sepeda motorne dadue luung pati",
+    "Bapan tiange ka carik nanem padi uli tuning semengan",
+    "Memene ketut bagus ka yogyakarta ngatehin adine"
 ]
 
 # Valid Sentences:
