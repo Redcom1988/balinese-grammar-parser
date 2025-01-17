@@ -162,6 +162,30 @@ class CYKParser:
         
         return scored_parses[0][0] if scored_parses else None
 
+    def _combine_cells(self, table, col, k, length):
+        """Combine cells according to CNF rules, tracking structure."""
+        for left in table[col][k]:
+            for right in table[col + k + 1][length - k - 2]:
+                production = f"{left[0]} {right[0]}"
+                for lhs, rhs in self.cnf_rules.items():
+                    if production in rhs:
+                        # Check if we're creating a Pel and ensure P exists
+                        if lhs == 'Pel':
+                            # Check if P exists in earlier positions
+                            has_predicate = False
+                            for i in range(col):
+                                for j in range(len(table[i])):
+                                    if any(item[0] == 'P' for item in table[i][j]):
+                                        has_predicate = True
+                                        break
+                            if not has_predicate:
+                                continue  # Skip this Pel production if no P exists
+                        
+                        new_item = (lhs, left, right)
+                        if not any(x[0] == lhs and x[1] == left and x[2] == right 
+                                for x in table[col][length-1]):
+                            table[col][length-1].append(new_item)
+
     def _print_clear_structure(self, node, words, level=0):
         """Print a clear, simplified structure based on grammatical categories."""
         if not node:
@@ -192,30 +216,6 @@ class CYKParser:
                 self._print_clear_structure(node[1], words, level + 1)
             if node[2]:
                 self._print_clear_structure(node[2], words, level + 1)
-
-    def _combine_cells(self, table, col, k, length):
-        """Combine cells according to CNF rules, tracking structure."""
-        for left in table[col][k]:
-            for right in table[col + k + 1][length - k - 2]:
-                production = f"{left[0]} {right[0]}"
-                for lhs, rhs in self.cnf_rules.items():
-                    if production in rhs:
-                        # Check if we're creating a Pel and ensure P exists
-                        if lhs == 'Pel':
-                            # Check if P exists in earlier positions
-                            has_predicate = False
-                            for i in range(col):
-                                for j in range(len(table[i])):
-                                    if any(item[0] == 'P' for item in table[i][j]):
-                                        has_predicate = True
-                                        break
-                            if not has_predicate:
-                                continue  # Skip this Pel production if no P exists
-                        
-                        new_item = (lhs, left, right)
-                        if not any(x[0] == lhs and x[1] == left and x[2] == right 
-                                for x in table[col][length-1]):
-                            table[col][length-1].append(new_item)
 
     def print_table_with_structure(self, table):
         """Print the parsing table as a right triangle with the longest row at the bottom."""
