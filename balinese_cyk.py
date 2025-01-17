@@ -218,16 +218,51 @@ class CYKParser:
                             table[col][length-1].append(new_item)
 
     def print_table_with_structure(self, table):
-        """Print a simplified version of the parsing table."""
-        print("\nParsing Table (Simplified):")
-        for i, row in enumerate(table):
-            print(f"Length {i+1}:")
-            for j, cell in enumerate(row):
-                if cell:
-                    main_symbols = sorted(set(item[0] for item in cell 
-                                        if not item[0].startswith('X')))
-                    if main_symbols:
-                        print(f"  Position {j}: {main_symbols}")
+        """Print the parsing table as a right triangle with the longest row at the bottom."""
+        n = len(table)
+        if n == 0:
+            return
+
+        # Calculate the maximum width needed for cell content
+        max_width = 0
+        for row in table:
+            for cell in row:
+                content = ', '.join(sorted(set(item[0] for item in cell if not item[0].startswith('X'))))
+                max_width = max(max_width, len(content))
+        
+        # Ensure minimum width and add padding
+        cell_width = max(max_width + 2, 10)
+        
+        print("\nParsing Table:")
+        
+        # Helper function to create horizontal separator
+        def create_separator(num_cells):
+            return ("+" + "-" * cell_width) * num_cells + "+"
+        
+        # Print from top to bottom
+        for i in range(n-1, -1, -1):
+            # Print separator
+            print(create_separator(n-i))
+            
+            # Print cells
+            row_content = "|"
+            for j in range(n-i):
+                cell = table[j][i]
+                content = ', '.join(sorted(set(item[0] for item in cell if not item[0].startswith('X'))))
+                if not content:
+                    content = "∅"  # Use empty set symbol for empty cells
+                row_content += f"{content:^{cell_width}}|"
+            print(row_content)
+        
+        # Print final separator
+        print(create_separator(n))
+        
+        # Print position indicators
+        pos_line = "|"
+        for j in range(n):
+            pos_line += f"{'Pos ' + str(j):^{cell_width}}|"
+        print(pos_line)
+        print(create_separator(n))
 
 def main():
     cfg_rules = [
