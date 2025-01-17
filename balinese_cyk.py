@@ -2,20 +2,39 @@ from typing import Dict, List, Set, Tuple
 from sentences import test_valid_sentences, test_invalid_sentences
 
 class CNFConverter:
+    """
+    A class to convert Context-Free Grammar (CFG) rules into Chomsky Normal Form (CNF).
+    
+    CNF has two types of production rules:
+    1. A -> BC (where A, B, C are non-terminals)
+    2. A -> a (where A is a non-terminal and a is a terminal)
+    """
     def __init__(self):
+        # Counter for generating new non-terminal symbols
         self.iteration = 0
+        # Dictionary mapping non-terminal symbols to their indices
         self.non_terminals = {}
+        # List of lists containing production rules for each non-terminal
         self.productions = []
     
     def convert_to_cnf(self, cfg_rules: List[str]) -> Dict[str, List[str]]:
-        """Convert CFG rules to CNF format."""
-        # Split rules into non-terminals and productions
+        """
+        Convert CFG rules to CNF format.
+        
+        Args:
+            cfg_rules: List of strings representing CFG production rules
+                      in the format "A -> B C | D"
+        
+        Returns:
+            Dictionary mapping non-terminals to their CNF production rules
+        """
+        # Parse input rules and organize them into data structures
         for index, rule in enumerate(cfg_rules):
             lhs, rhs = rule.split(" -> ")
             self.non_terminals[lhs] = index
             self.productions.append(rhs.split(" | "))
         
-        # Sort productions
+        # Sort productions lexicographically to ensure consistent output
         for index, rule in enumerate(self.productions):
             for i in range(1, len(self.productions[index])):
                 key = self.productions[index][i]
@@ -25,12 +44,12 @@ class CNFConverter:
                     j = j - 1
                 self.productions[index][j + 1] = key
 
-        # Convert each production to CNF
+        # Convert each production to CNF format
         for index, part in enumerate(self.productions):
             temp = self._handle_unit_production(part)
             self.productions[index] = temp
         
-        # Create final CNF dictionary
+        # Build the final CNF rules dictionary
         cnf_rules = {}
         for key, val in self.non_terminals.items():
             cnf_rules[key] = self.productions[val]
@@ -38,43 +57,71 @@ class CNFConverter:
         return cnf_rules
     
     def _reduce_production(self, unit: List[str]) -> List[str]:
-        """Reduce productions with more than two symbols."""
+        """
+        Reduce productions with more than two symbols by introducing new non-terminals.
+        
+        For example: A -> B C D becomes:
+        A -> X0 D
+        X0 -> B C
+        
+        Args:
+            unit: List of symbols in a production rule
+        
+        Returns:
+            List of reduced production rules in CNF format
+        """
         if len(unit) <= 2:
             return [" ".join(unit)]
             
         temp = []
         new_var = f"X{self.iteration}"
         
-        # Combine first two symbols
+        # Combine first two symbols of the production
         combined = f"{unit[0]} {unit[1]}"
         temp.append(combined)
         
-        # Create new non-terminal if needed
+        # Either create a new non-terminal or reuse an existing one
         if temp not in self.productions:
+            # Create new non-terminal and continue reducing
             self.non_terminals[new_var] = len(self.non_terminals)
             self.productions.append(temp)
             self.iteration += 1
             temp = self._reduce_production([new_var] + unit[2:])
         else:
+            # Reuse existing non-terminal for the same production
             existing_var = list(self.non_terminals.keys())[self.productions.index(temp)]
             temp = self._reduce_production([existing_var] + unit[2:])
             
         return temp
     
     def _handle_unit_production(self, part: List[str]) -> List[str]:
-        """Handle unit productions and call reduce_production when needed."""
+        """
+        Process unit productions and handle productions needing reduction.
+        
+        Unit productions (A -> B) are replaced with their corresponding rules.
+        Productions with more than two symbols are reduced using _reduce_production.
+        
+        Args:
+            part: List of production rules for a non-terminal
+        
+        Returns:
+            List of processed production rules in CNF format
+        """
         temp = []
         for unit in part:
             symbols = unit.split()
             if len(symbols) == 1:
+                # Handle unit production by substituting with its rules
                 if unit in self.non_terminals:
                     temp.extend(self._handle_unit_production(
                         self.productions[self.non_terminals[unit]]))
                 else:
                     return part
             elif len(symbols) > 2:
+                # Reduce productions with more than two symbols
                 temp.extend(self._reduce_production(symbols))
             else:
+                # Production is already in CNF format
                 temp.append(unit)
         return temp
 
@@ -129,7 +176,6 @@ class CYKParser:
             if parse[0] == 'K':
                 has_subject = False
                 has_predicate = False
-                has_object = False
                 
                 if isinstance(parse[1], tuple):
                     if parse[1][0] == 'S':
@@ -141,7 +187,6 @@ class CYKParser:
                         has_predicate = True
                         score += 3
                     elif parse[2][0] == 'O':
-                        has_object = True
                         score += 2
                         
                 # Bonus for complete S-P-O structure
@@ -196,8 +241,8 @@ class CYKParser:
             'S': 'Subject',
             'P': 'Predicate',
             'O': 'Object',
-            'Pel': 'Complement',
-            'Ket': 'Explanation',
+            'Pel': 'Complement (Pelengkap)',
+            'Ket': 'Explanation (Keterangan)',
             'NP': 'Noun Phrase',
             'VP': 'Verb Phrase',
             'SimpleVP': 'Simple Verb',

@@ -34,7 +34,7 @@ class ParserGUI:
         input_label = ttk.Label(main_frame, text="Input Sentence:", font=('Arial', 10, 'bold'))
         input_label.grid(row=1, column=0, sticky=tk.W, pady=(0, 5))
         
-        self.input_text = scrolledtext.ScrolledText(main_frame, height=6, width=70, wrap=tk.WORD)
+        self.input_text = scrolledtext.ScrolledText(main_frame, height=6, width=70, font=('Courier', 14), wrap=tk.WORD)
         self.input_text.grid(row=2, column=0, sticky=(tk.W, tk.E), pady=(0, 10))
         
         # Parse button
@@ -49,7 +49,7 @@ class ParserGUI:
         output_frame = ttk.Frame(main_frame)
         output_frame.grid(row=5, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
         
-        self.output_text = scrolledtext.ScrolledText(output_frame, width=70, font=('Courier', 8), wrap=tk.NONE)
+        self.output_text = scrolledtext.ScrolledText(output_frame, width=70, font=('Courier', 14), wrap=tk.NONE)
         self.output_text.pack(fill=tk.BOTH, expand=True)
         self.output_text.configure(state='disabled')
         

@@ -29,9 +29,9 @@ cfg_rules = [
     "Adv -> tuning | tuni | semengan | ibi | sanja | taun | wai | semeng | peteng | sue | pisan",
     "Noun -> carik | padi | sekolah | sepeda | kantor | desa | kampus | tukang | pasar | dosen | nasi | ajengan | siap | ukud | baju | mahasiswa | olahraga | balian | komputer | sepatu | kota | motor | umah | olahraga | matematika | pasang",
     "PropNoun -> i | putu | dangin | wayan | darta | gede | kampus | udayana | jimbaran | tukad | unda | yogyakarta | ketut | bagus | luh | jegeg | puspa | surabaya | dadue",
-    "Pronoun -> titiang | tiang | tiange | adin | adine | bapakne | bapane | bapan | dane | memene | ragane | timpal | timpalne | adik | sepedane | ketua | ipune | anake | guru | ibu | motorne",
+    "Pronoun -> titiang | tiang | tiange | adin | adine | bapakne | bapane | bapan | dane | memene | ragane | timpal | timpalne | adik | sepedane | ketua | ipune | anake | guru | ibu | motorne | pak | pianakne",
     "Det -> punika | ento",
-    "Adj -> galak | jegeg | sane | demenin | paling | akeh | luung | gati | baru | sakti | dueg | seleg | goreng",
+    "Adj -> galak | jegeg | sane | demenin | paling | akeh | luung | gati | baru | sakti | dueg | seleg | goreng | pati",
     "Verb -> melajah | kapah | melali | anggone | rauh | mekarya | manting | meblanja | dados | ngatehin | nanem | megambal | pinaka | ngajahin | abane | wewantenan",
     "Num -> telung | pitung | 2020"
 ]
