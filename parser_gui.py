@@ -49,10 +49,15 @@ class ParserGUI:
         output_frame = ttk.Frame(main_frame)
         output_frame.grid(row=5, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
         
-        self.output_text = scrolledtext.ScrolledText(output_frame, width=70, wrap=tk.WORD)
+        self.output_text = scrolledtext.ScrolledText(output_frame, width=70, font=('Courier', 8), wrap=tk.NONE)
         self.output_text.pack(fill=tk.BOTH, expand=True)
         self.output_text.configure(state='disabled')
         
+        # Add horizontal scrollbar
+        h_scroll = ttk.Scrollbar(output_frame, orient=tk.HORIZONTAL, command=self.output_text.xview)
+        h_scroll.pack(side=tk.BOTTOM, fill=tk.X)
+        self.output_text['xscrollcommand'] = h_scroll.set
+
         # Configure grid weights for resizing
         self.root.columnconfigure(0, weight=1)
         self.root.rowconfigure(0, weight=1)
