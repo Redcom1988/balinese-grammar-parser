@@ -10,7 +10,7 @@ class ParserGUI:
     def __init__(self, root):
         self.root = root
         self.root.title("Balinese Language Parser")
-        self.root.geometry("800x650")  # Increased size to accommodate more content
+        self.root.geometry("1200x800")
         
         # Initialize parser components
         self.cfg_rules = cfg_rules
@@ -34,7 +34,7 @@ class ParserGUI:
         input_label = ttk.Label(main_frame, text="Input Sentence:", font=('Arial', 10, 'bold'))
         input_label.grid(row=1, column=0, sticky=tk.W, pady=(0, 5))
         
-        self.input_text = scrolledtext.ScrolledText(main_frame, height=4, width=70, wrap=tk.WORD)
+        self.input_text = scrolledtext.ScrolledText(main_frame, height=6, width=70, wrap=tk.WORD)
         self.input_text.grid(row=2, column=0, sticky=(tk.W, tk.E), pady=(0, 10))
         
         # Parse button
@@ -45,14 +45,19 @@ class ParserGUI:
         output_label = ttk.Label(main_frame, text="Parse Result:", font=('Arial', 10, 'bold'))
         output_label.grid(row=4, column=0, sticky=tk.W, pady=(0, 5))
         
-        self.output_text = scrolledtext.ScrolledText(main_frame, height=25, width=70, wrap=tk.WORD)
-        self.output_text.grid(row=5, column=0, sticky=(tk.W, tk.E))
+        # Create a frame for the output text to enable better resizing
+        output_frame = ttk.Frame(main_frame)
+        output_frame.grid(row=5, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
+        
+        self.output_text = scrolledtext.ScrolledText(output_frame, width=70, wrap=tk.WORD)
+        self.output_text.pack(fill=tk.BOTH, expand=True)
         self.output_text.configure(state='disabled')
         
-        # Configure grid weights
+        # Configure grid weights for resizing
         self.root.columnconfigure(0, weight=1)
         self.root.rowconfigure(0, weight=1)
         main_frame.columnconfigure(0, weight=1)
+        main_frame.rowconfigure(5, weight=1)  # Make the output row expandable
         
         # Initialize state
         self.is_loading = False
@@ -73,7 +78,7 @@ class ParserGUI:
         self.parse_button['text'] = "Parsing..."
         
         # Get the input sentence
-        input_sentence = self.input_text.get('1.0', tk.END).strip()
+        input_sentence = self.input_text.get('1.0', tk.END).strip().lower()
         
         # Create a string buffer to capture the output
         import io
